@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 20:04:14 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:06:00 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,6 @@ void search_contact(Contact *contact)
 
 void Contact::add_contact(void)
 {
-    if (this->index > MAX_CONTACTS)
-    {
-        std::cout << "Phonebook is full" << std::endl;
-        return ;
-    }
     this->index = index_global;
     std::cout << "=============================" << std::endl;
     std::cout << "Enter first name: ";
@@ -97,7 +92,8 @@ void check_input(std::string input, Contact* contact)
     {
         contact[index_global].add_contact();
         index_global++;
-        std::cout << index_global << std::endl;
+        if (index_global > MAX_CONTACTS)
+            index_global--; 
     }
     else if (input == "SEARCH")
         search_contact(contact);
