@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 20:06:32 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:16:00 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,26 @@ Contact::~Contact(void)
 	return ;
 }
 
+void print_table(Contact *contact)
+{
+    std::cout << "=============================" << std::endl;
+    std::cout << " index|first name| last name|  nickname" << std::endl;
+    for (int i = 1; i < index_global; i++)
+    {
+        std::cout << " " << contact[i].index << "|";
+        std::cout << contact[i].first_name << "|";
+        std::cout << contact[i].last_name << "|";
+        std::cout << contact[i].nickname << std::endl;
+    }
+    std::cout << "=============================" << std::endl;
+    return ;
+}
+
 void search_contact(Contact *contact)
 {
     int index_input = 0;
     int i = 0;
-    //print the table
+    print_table(contact);
     std::cout << "Enter an index..." << std::endl;
     std::cin >> index_input;
     if (index_input > 8)
@@ -59,7 +74,6 @@ void search_contact(Contact *contact)
     return ;
 }
 
-
 void Contact::add_contact(void)
 {
     this->index = index_global;
@@ -78,13 +92,6 @@ void Contact::add_contact(void)
     return ;
 }
 
-void print_table(Contact *contact)
-{
-    for (int  i = 0; i < MAX_CONTACTS; i++)
-        std::cout << contact[i].first_name << std::endl;
-    return ;
-}
-
 void check_input(std::string input, Contact* contact)
 {
     if (input == "ADD")
@@ -96,8 +103,6 @@ void check_input(std::string input, Contact* contact)
     }
     else if (input == "SEARCH")
         search_contact(contact);
-    else if (input == "DEBUG")
-        print_table(contact);
     else
         std::cout << "Invalid input" << std::endl;
     return ;
