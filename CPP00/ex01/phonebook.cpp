@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 20:06:00 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:06:32 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int index_global = 1;
 // Constructor and Destructor
 Contact::Contact(void)
 {
-	std::cout << "Constructor called" << std::endl;
 	this->index = 0;
 	this->first_name = "";
 	this->last_name = "";
