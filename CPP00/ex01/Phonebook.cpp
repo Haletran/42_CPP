@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 20:18:11 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:40:04 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 static int index_global = 1;
 
@@ -31,6 +31,14 @@ Contact::~Contact(void)
 	return ;
 }
 
+void print_parse(std::string str)
+{
+    for (int i = 0; i < 9; i++)
+        std::cout << str[i];
+    std::cout << "." << std::endl;
+}
+
+
 void print_table(Contact *contact)
 {
     std::cout << "=============================" << std::endl;
@@ -38,9 +46,18 @@ void print_table(Contact *contact)
     for (int i = 1; i < index_global; i++)
     {
         std::cout << " " << contact[i].index << "|";
-        std::cout << contact[i].first_name << "|";
-        std::cout << contact[i].last_name << "|";
-        std::cout << contact[i].nickname << std::endl;
+        if (contact[i].first_name.length() > 10)
+            print_parse(contact[i].first_name);
+        else
+            std::cout << contact[i].first_name << "|";
+        if (contact[i].last_name.length() > 10)
+            print_parse(contact[i].last_name);
+        else 
+            std::cout << contact[i].last_name << "|";
+        if (contact[i].nickname.length() > 10)
+            print_parse(contact[i].nickname);
+        else
+            std::cout << contact[i].nickname << std::endl;
     }
     std::cout << "=============================" << std::endl;
     return ;
@@ -58,6 +75,8 @@ void search_contact(Contact *contact)
     print_table(contact);
     std::cout << "Enter an index..." << std::endl;
     std::cin >> index_input;
+    if (!index_input)
+        return;
     if (index_input > 8)
     {
         std::cout << "Only 8 contacts !" << std::endl;
@@ -115,7 +134,8 @@ void check_input(std::string input, Contact* contact)
 
 int	main(void)
 {
-    Contact	contact[MAX_CONTACTS];
+    Phonebook phonebook;
+    phonebook.contact contact;
     while(1)
     {
         std::cout << "Enter an option: ";

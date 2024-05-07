@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:37:34 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 19:36:35 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:38:41 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,16 @@
 # define CYAN "\033[36m"
 # define RESET "\033[0m"
 
-# include "contact.class.hpp"
+# include "Contact.class.hpp"
 #include <stdlib.h>
 # include <cstring>
 # include <iostream>
+
+class Phonebook
+{
+    private:
+        Contact	contact[MAX_CONTACTS];
+}
+
 
 #endif
