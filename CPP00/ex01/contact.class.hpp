@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:37:33 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 18:20:17 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:33:04 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <cstring>
 # include <iostream>
 
+
 class Contact
 {
     public:
@@ -24,6 +25,7 @@ class Contact
         ~Contact(void);
         
         int index;
+        void add_contact(void);
         std::string first_name;
         std::string last_name;
         std::string nickname;
@@ -31,5 +33,7 @@ class Contact
         std::string phone_number;
         std::string darkest_secret;
 };
+
+void search_contact(Contact Contact);
 
 #endif

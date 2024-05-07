@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:37:34 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 18:19:58 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:36:35 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define RESET "\033[0m"
 
 # include "contact.class.hpp"
+#include <stdlib.h>
 # include <cstring>
 # include <iostream>
 
