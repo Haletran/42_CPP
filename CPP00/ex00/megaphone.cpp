@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:26:57 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/06 19:36:17 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:16:58 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int argc, char **argv)
         {
 			while (argv[i][j])
             {
-				std::cout << (char)std::toupper(argv[i][j]);
+				std::string str = argv[i];
+				std::cout << (char)std::toupper(str[j]);
                 j++;
             }
             j = 0;
