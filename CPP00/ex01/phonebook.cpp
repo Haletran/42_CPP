@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 20:16:00 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:18:11 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void search_contact(Contact *contact)
 {
     int index_input = 0;
     int i = 0;
+    if (index_global == 1)
+    {
+        std::cout << "No contacts" << std::endl;
+        return ;
+    }
     print_table(contact);
     std::cout << "Enter an index..." << std::endl;
     std::cin >> index_input;
