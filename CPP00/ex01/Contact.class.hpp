@@ -22,10 +22,12 @@ class Contact
     public:
         Contact(void);
         ~Contact(void);
-        
-        int index;
-        void add_contact(void);
+        void add_contact(int index_global);
+        std::string get_first_name() { return (first_name); };
+        std::string get_last_name() { return (last_name); };
+        std::string get_nickname() { return (nickname); };
     private:
+        int index;
         std::string first_name;
         std::string last_name;
         std::string nickname;

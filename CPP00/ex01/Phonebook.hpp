@@ -31,12 +31,12 @@ class Phonebook
     public:
         Phonebook(void);
         ~Phonebook(void);
-        void check_input(std::string input);
+        int index_global;
+        void check_option(std::string option);
         void search_contact(void);
-        void print_table(void);
-        void print_parse(std::string str);
     private:
-        Contact	contact;
+        Contact contact[MAX_CONTACTS];
+        
 };
 
 #endif
