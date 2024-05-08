@@ -5,24 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/08 16:25:05 by codespace        ###   ########.fr       */
+/*   Created: 2024/05/08 16:19:10 by codespace         #+#    #+#             */
+/*   Updated: 2024/05/08 16:52:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "HumanA.hpp"
+#include "HumanB.cpp"
 
-int	main(void)
+int main()
 {
-    Phonebook phonebook;
-    while(1)
     {
-        std::cout << "Enter an option: ";
-        std::string option;
-        std::cin >> option;
-        if (std::cin.eof()) {std::cout << std::endl; break;}
-        if (option == "EXIT" || option.empty()) {break;}
-        else {phonebook.check_option(option);}
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
     }
     return (0);
 }
