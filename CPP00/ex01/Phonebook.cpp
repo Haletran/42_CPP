@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:38:00 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/05/07 20:40:04 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/05/08 14:17:55 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 static int index_global = 1;
 
 // Constructor and Destructor
+
+Phonebook::Phonebook(void)
+{
+    Contact contact[MAX_CONTACTS];
+    return ;
+}
+
+Phonebook::~Phonebook(void)
+{
+    return ;
+}
+
 Contact::Contact(void)
 {
 	this->index = 0;
@@ -39,7 +51,7 @@ void print_parse(std::string str)
 }
 
 
-void print_table(Contact *contact)
+void Phonebook::print_table(void)
 {
     std::cout << "=============================" << std::endl;
     std::cout << " index|first name| last name|  nickname" << std::endl;
@@ -63,16 +75,16 @@ void print_table(Contact *contact)
     return ;
 }
 
-void search_contact(Contact *contact)
+void Phonebook::search_contact(void)
 {
     int index_input = 0;
     int i = 0;
-    if (index_global == 1)
+    if (this->index_global == 1)
     {
         std::cout << "No contacts" << std::endl;
         return ;
     }
-    print_table(contact);
+    this->print_table();
     std::cout << "Enter an index..." << std::endl;
     std::cin >> index_input;
     if (!index_input)
@@ -85,11 +97,11 @@ void search_contact(Contact *contact)
     std::cout << index_input << std::endl;
     while (i < MAX_CONTACTS)
     {
-        if (contact[i].index == index_input)
+        if (this->contact[i].index == index_input)
         {
-            std::cout << "first_name : " << contact[i].first_name << std::endl;
-            std::cout << "last_name : " << contact[i].last_name << std::endl;
-            std::cout << "last_name : " <<contact[i].nickname << std::endl;
+            std::cout << "first_name : " << this->contact[i].first_name << std::endl;
+            std::cout << "last_name : " << this->contact[i].last_name << std::endl;
+            std::cout << "last_name : " << this->contact[i].nickname << std::endl;
             return ;
         }
         i++;
@@ -116,17 +128,17 @@ void Contact::add_contact(void)
     return ;
 }
 
-void check_input(std::string input, Contact* contact)
+void Phonebook::check_input(std::string input)
 {
     if (input == "ADD")
     {
-        contact[index_global].add_contact();
+        this->contact[index_global].add_contact();
         index_global++;
         if (index_global > MAX_CONTACTS)
             index_global--; 
     }
     else if (input == "SEARCH")
-        search_contact(contact);
+        this->search_contact();
     else
         std::cout << "Invalid input" << std::endl;
     return ;
@@ -135,7 +147,6 @@ void check_input(std::string input, Contact* contact)
 int	main(void)
 {
     Phonebook phonebook;
-    phonebook.contact contact;
     while(1)
     {
         std::cout << "Enter an option: ";
@@ -143,11 +154,7 @@ int	main(void)
         std::cin >> option;
         if (option == "EXIT" || option.empty())
             break;
-        check_input(option, contact);
-    }   
-    for (int i = 1; i < 8; i++)
-    {
-        contact[i].~Contact();
+        phonebook.check_input(option);
     }
-	return (0);
+    return (0);
 }
