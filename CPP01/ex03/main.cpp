@@ -6,12 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:19:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 16:52:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:29:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
-#include "HumanB.cpp"
+#include "HumanB.hpp"
 
 int main()
 {

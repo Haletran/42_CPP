@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:19:18 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 16:46:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:05:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ class HumanA
         HumanA(void);
         ~HumanA(void);
         void attack(void);
-        HumanA(std::string name, Weapon weapon) : name(name), weapon(weapon) {}
+        HumanA(std::string name, Weapon& weapon) : name(name), weapon(&weapon) {}
     private:
         std::string name;
-        Weapon weapon;
+        Weapon* weapon;
 };
-
 
 
 #endif

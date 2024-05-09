@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:19:03 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 16:47:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:14:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Weapon
         ~Weapon(void);
         Weapon(std::string type) : type(type) {}
         std::string getType() { return type; }
-        const std::string& getType(void) const { return (type); }
         void setType(const std::string& newType) { type = newType; }
     private:
         std::string type;
