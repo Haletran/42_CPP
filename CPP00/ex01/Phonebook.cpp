@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:18:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 15:19:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/21 11:38:43 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@ Phonebook::Phonebook(void)
 }
 
 Phonebook::~Phonebook(void)
-{
-    return ;
-}
-
-Contact::Contact(void)
-{
-    return ;
-}
-
-Contact::~Contact(void)
 {
     return ;
 }
@@ -69,6 +59,13 @@ void Phonebook::search_contact(void)
     int input;
     std::cin >> input;
     if (std::cin.eof()) {std::cout << std::endl; return;}
+    if (!input || (input < 1 || input > 8))
+    {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Invalid index" << std::endl;
+        return ;
+    }
     std::cout << "first_name : " << contact[input].get_first_name() << std::endl;
     std::cout << "last_name : " << contact[input].get_last_name() << std::endl;
     std::cout << "nickname : " << contact[input].get_nickname() << std::endl;
@@ -77,30 +74,33 @@ void Phonebook::search_contact(void)
 
 void Phonebook::add_contact(int index_global)
 {
+    std::cin.ignore();
     std::string f_name, l_name, nick_n, phone_n, secret;
     contact[index_global].set_index(index_global);
     std::cout << "=======================" << std::endl;
     std::cout << "Enter first_name : ";
-    std::cin >> f_name;
+    std::getline(std::cin, f_name);
     if (std::cin.eof()) {std::cout << std::endl; return;}
     contact[index_global].set_first_name(f_name);
     std::cout << "Enter last_name : ";
-    std::cin >> l_name;
+    std::getline(std::cin, l_name);
     if (std::cin.eof()) {std::cout << std::endl; return;}
     contact[index_global].set_last_name(l_name);
     std::cout << "Enter nickname : ";
-    std::cin >> nick_n;
+    std::getline(std::cin, nick_n);
     if (std::cin.eof()) {std::cout << std::endl; return;}
     contact[index_global].set_nickname(nick_n);
     std::cout << "Enter phone_number : ";
-    std::cin >> phone_n;
+    std::getline(std::cin, phone_n);
     if (std::cin.eof()) {std::cout << std::endl; return;}
     contact[index_global].set_phone_number(phone_n);
     std::cout << "Enter darkest_secret : ";
-    std::cin >> secret;
+    std::getline(std::cin, secret);
     if (std::cin.eof()) {std::cout << std::endl; return;}
     contact[index_global].set_secret(secret);
     std::cout << "=======================" << std::endl;
+    
+    std::cout << "\033[32m" << "Contact successfully added :)" << "\033[0m" << std::endl;
 }
 
 void Phonebook::check_option(std::string option)
