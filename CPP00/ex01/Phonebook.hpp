@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:37:34 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/07/21 11:38:23 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:17:19 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Phonebook
         void search_contact(void);
         void print_list(void);
         void add_contact(int index_global);
+        void delete_last_contact(int index);
     private:
         Contact contact[MAX_CONTACTS];
         

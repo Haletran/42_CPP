@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:18:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/07/21 11:38:43 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:34:31 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Phonebook::Phonebook(void)
 {
-    this->index_global = 1;
+    this->index_global = 0;
     return ;
 }
 
@@ -28,7 +28,9 @@ void Phonebook::print_list(void)
     std::cout << "=================================================" << std::endl;
     std::cout << std::setw(10) << "index" << " | " << std::setw(10) << "first_name" << " | " << std::setw(10) << "last_name" << " | " << std::setw(10) << "nickname"<< std::endl;
     std::cout << "-------------------------------------------------" << std::endl;
-    for(int i = 1; i < index_global; i++)
+    if (index_global >= 7)
+        index_global--;
+    for(int i = 0; i < index_global; i++)
     {
         std::string first_name = contact[i].get_first_name();
         std::string last_name = contact[i].get_last_name();
@@ -46,10 +48,9 @@ void Phonebook::print_list(void)
     std::cout << "=================================================" << std::endl;
 }
 
-
 void Phonebook::search_contact(void)
 {
-    if (index_global == 1)
+    if (index_global == 0)
     {
         std::cout << "No contacts in Phonebook" << std::endl;
         return ;
@@ -75,6 +76,11 @@ void Phonebook::search_contact(void)
 void Phonebook::add_contact(int index_global)
 {
     std::cin.ignore();
+    if (index_global >= 8)
+    {
+        std::cout << "im here" << std::endl;
+        index_global--;
+    }
     std::string f_name, l_name, nick_n, phone_n, secret;
     contact[index_global].set_index(index_global);
     std::cout << "=======================" << std::endl;
