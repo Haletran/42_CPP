@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:26:57 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/07/21 11:49:55 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:13:52 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 				std::cout << (char)std::toupper(str[j]);
                 j++;
             }
-			std::cout << " ";
             j = 0;
             i++;
         }

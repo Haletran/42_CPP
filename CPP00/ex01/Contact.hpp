@@ -24,12 +24,14 @@ class Contact
         std::string get_first_name();
         std::string get_last_name();
         std::string get_nickname();
-        void set_index(int& ind);
-        void set_first_name(std::string& f_name);
-        void set_last_name(std::string& l_name);
-        void set_nickname(std::string& nick_n);
-        void set_phone_number(std::string& phone_n);
-        void set_secret(std::string& secret);
+        std::string get_phone_number();
+        std::string get_secret();
+        void set_index(int ind);
+        void set_first_name(std::string f_name);
+        void set_last_name(std::string l_name);
+        void set_nickname(std::string nick_n);
+        void set_phone_number(std::string phone_n);
+        void set_secret(std::string secret);
     private:
         int index;
         std::string first_name;

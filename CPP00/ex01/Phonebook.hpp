@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:37:34 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/07/21 12:17:19 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:47:11 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #define CYAN "\033[36m"
 #define RESET "\033[0m"
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <iomanip>
@@ -34,11 +34,11 @@ class Phonebook
         Phonebook(void);
         ~Phonebook(void);
         int index_global;
+        int index_tmp;
         void check_option(std::string option);
         void search_contact(void);
         void print_list(void);
-        void add_contact(int index_global);
-        void delete_last_contact(int index);
+        void add_contact(void);
     private:
         Contact contact[MAX_CONTACTS];
         
