@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 14:42:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 15:13:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/19 20:06:02 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,16 @@ void Zombie::announce( void )
 {
     std::cout << get_name() << ": BraiiiiiiinnnzzzZ..." << std::endl;
     return ;
+}
+
+void Zombie::set_name( std::string name )
+{
+    if (name.empty())
+        name = "No_name";
+    name = given_name;
+}
+
+std::string Zombie::get_name( void )
+{
+    return (this->name);
 }

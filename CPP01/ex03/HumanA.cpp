@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:19:20 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 13:37:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/19 20:15:04 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
-
 
 HumanA::HumanA(void)
 {

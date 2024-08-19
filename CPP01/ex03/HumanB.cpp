@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:19:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 13:29:04 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/19 20:16:09 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(void)
-{
-    return ;
-}
+HumanB::HumanB(void){};
 
-HumanB::~HumanB(void)
-{
-    return;
-}
+HumanB::~HumanB(void){};
 
 void HumanB::attack()
 {
