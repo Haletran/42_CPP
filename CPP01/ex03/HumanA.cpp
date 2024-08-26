@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bapt <bapt@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:19:20 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/19 20:15:04 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:16:22 by bapt             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(void)
-{
-    return ;
-}
+HumanA::HumanA(std::string name, Weapon& weapon) : name(name), weapon(&weapon) {}
 
 HumanA::~HumanA(void)
 {

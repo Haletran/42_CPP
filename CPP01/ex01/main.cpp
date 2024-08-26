@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bapt <bapt@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:20:36 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/19 20:07:39 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/26 19:53:28 by bapt             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-    int n = 10;
+    int n = 100;
     Zombie *horde;
     horde = zombieHorde(n, "Michel");
     for (int i = 0; i < n; i++)

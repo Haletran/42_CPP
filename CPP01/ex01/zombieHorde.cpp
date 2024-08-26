@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bapt <bapt@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:22:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/19 20:07:49 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/26 19:55:31 by bapt             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
-    if (N <= 0)
+    if (N <= 0 || N > 10000)
+    {
+        std::cout << "Not enough or too much zombie in the horde" << std::endl;
         return (0);
+    }
     Zombie *zombie = new Zombie[N];
     if (!zombie)
         return (NULL);

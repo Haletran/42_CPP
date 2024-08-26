@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bapt <bapt@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:28:18 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/19 20:54:44 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:06:12 by bapt             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,21 @@ int get_option(std::string str)
 int main(int argc, char **argv)
 {
     Harl harl_instance;
-    if (!argv[1])
+    if (!argv[1] || argc != 2)
         return 1;
     std::string option = argv[1];
 
-    (void)argc;
     switch (get_option(option))
     {
         case 0:
             harl_instance.complain("DEBUG");
-            std::cout << std::endl;
+            // fall through
         case 1:
             harl_instance.complain("INFO");
-            std::cout << std::endl;
+            // fall through
         case 2:
             harl_instance.complain("WARNING");
-            std::cout << std::endl;
+            // fall through
         case 3: 
             harl_instance.complain("ERROR");
             break;

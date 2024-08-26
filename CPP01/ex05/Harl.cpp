@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bapt <bapt@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:29:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/19 20:54:20 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:00:49 by bapt             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void Harl::complain(std::string level)
     std::string OPTION[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void    (Harl::*print_fn[])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
+    if (level.length() <= 0)
+    {
+        std::cout << "[HARL] " << "Are you dumb ?" << std::endl;
+        return;
+    }
     while(i < 4)
     {
         if (level == OPTION[i])
@@ -60,6 +65,6 @@ void Harl::complain(std::string level)
         i++;
     }
     if (i == 4)
-        std::cout << "[HARL] "<< "Are you dumb ?" << std::endl; 
+        std::cout << "[HARL] "<< "Invalid option" << std::endl; 
     return ;
 }

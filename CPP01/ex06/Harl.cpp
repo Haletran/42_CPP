@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bapt <bapt@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:29:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/19 20:51:10 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:03:39 by bapt             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void Harl::complain(std::string level)
         if (level == OPTION[i])
         {
             (this->*print_fn[i])();
+            std::cout << std::endl;
             break;
         }
         i++;
