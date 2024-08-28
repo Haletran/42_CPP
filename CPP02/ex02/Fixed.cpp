@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:13:41 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/28 13:53:09 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:27:34 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,29 @@
 
 Fixed::Fixed() 
 {
-     std::cout << "Default constructor called" << std::endl;
 };
 
 Fixed::Fixed(const int i_con) 
 {
-    std::cout << "Int constructor called" << std::endl;
     this->value = i_con << BITS;
 };
 
 Fixed::Fixed(const float f_con)
 {
-    std::cout << "Float constructor called" << std::endl;
     this->value = roundf(f_con * (1 << BITS));
 }
 
 Fixed::~Fixed() 
 { 
-    std::cout << "Destructor called" << std::endl;
 };
 
 Fixed::Fixed(const Fixed& cpy)
 {
-    std::cout << "Copy constructor called" << std::endl;
     this->value = cpy.value;
 }
 
 Fixed &Fixed::operator=(const Fixed& src)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &src)
         this->value = src.getRawBits();
     return (*this);
@@ -73,3 +67,62 @@ std::ostream &operator<<(std::ostream& os, Fixed const &value)
     os << value.toFloat();
     return (os);
 }
+
+Fixed Fixed::min(const Fixed &i1, const Fixed &i2)
+{
+    if (i1.getRawBits() < i2.getRawBits())
+        return (i1);
+    return (i2);  
+}
+
+Fixed Fixed::min(Fixed &i1, Fixed &i2)
+{
+    if (i1.getRawBits() < i2.getRawBits())
+        return (i1);
+    return (i2);  
+}
+
+Fixed Fixed::max(Fixed &i1, Fixed &i2)
+{
+    if (i1.getRawBits() > i2.getRawBits())
+        return (i1);
+    return (i2);  
+}
+
+Fixed Fixed::max(const Fixed &i1, const Fixed &i2)
+{
+    if (i1.getRawBits() > i2.getRawBits())
+        return (i1);
+    return (i2);  
+}
+
+Fixed& Fixed::operator--()
+{
+    value--;
+    return (*this);
+    
+}
+Fixed& Fixed::operator++()
+{
+    value++;
+    return (*this);
+};
+
+Fixed Fixed::operator++(int)
+{
+    Fixed   tmp(*this);
+    operator++();
+    return (tmp);
+};
+Fixed Fixed::operator--(int)
+{
+    Fixed   tmp(*this);
+    operator--();
+    return (tmp);
+};
+
+Fixed& Fixed::operator*(const Fixed& other) 
+{
+    (void)other;
+    return (*this);
+};

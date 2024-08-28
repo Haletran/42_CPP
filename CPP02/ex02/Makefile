@@ -1,8 +1,8 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = brainzz
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+NAME = canon
+SRC = main.cpp Fixed.cpp 
 
 OBJ = $(SRC:.cpp=.o)
 

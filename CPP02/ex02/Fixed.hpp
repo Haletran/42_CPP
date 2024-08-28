@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:10:55 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/28 13:10:12 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:28:21 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,37 @@ class Fixed {
         Fixed (const float f_con);
         ~Fixed();
         Fixed& operator=(const Fixed& src);
+
+        // FUNCTIONS
         int getRawBits( void ) const;
         float toFloat( void ) const;
         int toInt( void ) const;
         void setRawBits( int const raw );
+        static Fixed min(const Fixed &i1, const Fixed &i2);
+        static Fixed min(Fixed &i1, Fixed &i2);
+        static Fixed max(const Fixed &i1, const Fixed &i2);
+        static Fixed max(Fixed &i1, Fixed &i2);
+
+        // SURCHARGE
+        Fixed& operator--();
+        Fixed& operator++();
+        Fixed operator++(int);
+        Fixed operator--(int);
+        Fixed& operator*(const Fixed& other);
+        Fixed& operator/(const Fixed& other);
+        Fixed& operator-(const Fixed& other);
+        Fixed& operator+(const Fixed& other);
+        Fixed& operator!=(int);
+        Fixed& operator==(int);
+        Fixed& operator<=(int);
+        Fixed& operator>=(int);
+        Fixed& operator>(int);
+        Fixed& operator<(int);
     private:
         int value;
         static const int BITS = 8;        
 };
 
-// supercharge d'operateur pour changer sa fonction
 std::ostream &operator<<(std::ostream& os, Fixed const &value);
 
 #endif
