@@ -6,21 +6,29 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:13:41 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/28 11:47:13 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:15:35 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed() 
-{
-    std::cout << "Default constructor called" << std::endl;
-    this->value = 0;
-    return ;
+Fixed::Fixed() {
+     std::cout << "Default constructor called" << std::endl;
 };
 
-Fixed::~Fixed() 
+Fixed::Fixed(const int i_con) 
 {
+    std::cout << "Int constructor called" << std::endl;
+    this->value = i_con;
+};
+
+Fixed::Fixed(const float f_con)
+{
+    std::cout << "Float constructor called" << std::endl;
+}
+
+Fixed::~Fixed() 
+{ 
     std::cout << "Destructor called" << std::endl;
 };
 
@@ -47,4 +55,16 @@ int Fixed::getRawBits( void ) const
 {
     std::cout << "getRawBits member function called" << std::endl;
     return (value);
+}
+
+float Fixed::toFloat( void ) const
+{
+    
+}
+
+
+
+int Fixed::toInt( void ) const
+{
+
 }

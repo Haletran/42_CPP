@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/08/28 11:51:03 by bapasqui          #+#    #+#              #
+#    Updated: 2024/08/28 11:51:05 by bapasqui         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = brainzz
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+NAME = canon
+SRC = main.cpp Fixed.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
