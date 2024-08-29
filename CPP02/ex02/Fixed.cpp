@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:13:41 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/28 15:27:34 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:17:56 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,31 @@ Fixed Fixed::max(const Fixed &i1, const Fixed &i2)
     return (i2);  
 }
 
+Fixed& Fixed::operator*(const Fixed& other)
+{
+    this->value = this->toFloat() * other.toFloat();
+    return(*this);
+}
+
+
+Fixed& Fixed::operator-(const Fixed& other)
+{
+    this->value = this->toFloat() - other.toFloat();
+    return(*this);
+}
+
+Fixed& Fixed::operator+(const Fixed& other)
+{
+    this->value = this->toFloat() + other.toFloat();
+    return(*this);
+}
+
+Fixed& Fixed::operator/(const Fixed& other)
+{
+    this->value = this->toFloat() / other.toFloat();
+    return(*this);
+}
+
 Fixed& Fixed::operator--()
 {
     value--;
@@ -114,15 +139,11 @@ Fixed Fixed::operator++(int)
     operator++();
     return (tmp);
 };
+
+
 Fixed Fixed::operator--(int)
 {
     Fixed   tmp(*this);
     operator--();
     return (tmp);
-};
-
-Fixed& Fixed::operator*(const Fixed& other) 
-{
-    (void)other;
-    return (*this);
 };
