@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:10:55 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/29 10:03:28 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:31:10 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ class Fixed {
         static Fixed max(Fixed &i1, Fixed &i2);
 
         // SURCHARGE
-        Fixed& operator--();
-        Fixed& operator++();
+        Fixed operator--();
+        Fixed operator++();
         Fixed operator++(int);
         Fixed operator--(int);
-        Fixed& operator*(const Fixed& other);
-        Fixed& operator/(const Fixed& other);
-        Fixed& operator-(const Fixed& other);
-        Fixed& operator+(const Fixed& other);
+        Fixed operator*(const Fixed& other);
+        Fixed operator/(const Fixed& other);
+        Fixed operator-(const Fixed& other);
+        Fixed operator+(const Fixed& other);
 
         // BOOL
-        bool operator!=(int);
-        bool operator==(int);
-        bool operator<=(int);
-        bool operator>=(int);
-        bool operator>(int);
-        bool operator<(int);
+        bool operator!=(const Fixed& other);
+        bool operator==(const Fixed& other);
+        bool operator<=(const Fixed& other);
+        bool operator>=(const Fixed& other);
+        bool operator>(const Fixed& other);
+        bool operator<(const Fixed& other);
     private:
         int value;
         static const int BITS = 8;        
