@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:10:55 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/28 13:10:12 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:21:30 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed {
         Fixed(const int i_con);
         Fixed (const float f_con);
         ~Fixed();
-        Fixed& operator=(const Fixed& src);
+        Fixed &operator=(const Fixed& src);
         int getRawBits( void ) const;
         float toFloat( void ) const;
         int toInt( void ) const;
