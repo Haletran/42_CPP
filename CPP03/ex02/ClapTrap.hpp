@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:21 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/31 13:55:47 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:07:35 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ class ClapTrap {
   private:
     ClapTrap();
 };
+
+
+// COLORS
+
+
 
 
 #endif

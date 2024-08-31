@@ -1,48 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   colors.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 09:55:21 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/31 13:54:28 by bapasqui         ###   ########.fr       */
+/*   Created: 2024/08/31 12:47:10 by bapasqui          #+#    #+#             */
+/*   Updated: 2024/08/31 12:47:43 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
-
-#include <iostream>
-
-class ClapTrap {
-  public:
-    // COPLIAN
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap& cpy);
-    ClapTrap& operator=(const ClapTrap& src);
-    ~ClapTrap();
-
-    // FUNCTIONS
-    void attack(const std::string& target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
-
-    // GETTER
-    std::string get_name();
-    int get_life();
-    int get_energy();
-    int get_attack();
-  private:
-    ClapTrap();
-    std::string name;
-    int _hit_points;
-    int _energy_points;
-    int _attack_damage;
-};
-
-
-// COLORS
+#ifndef COLORS_HPP
+#define COLORS_HPP
 
 #define RESET "\033[0m"
 
@@ -467,6 +436,5 @@ class ClapTrap {
 #define BG_STONE700  "\033[48;2;120;113;108m"
 #define BG_STONE800  "\033[48;2;97;89;84m"
 #define BG_STONE900  "\033[48;2;72;63;60m"
-
 
 #endif
