@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:50:49 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/31 11:21:49 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/31 11:24:27 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int main( void )
 	std::cout << "10 <= 6 = "<< (c <= d) << std::endl;
 	std::cout << "10 != 6 = "<< (c != d) << std::endl;
 	std::cout << "10 == 6 = "<< (c == d) << std::endl;
+	std::cout << "Max test : " << Fixed::max( c, d ) << std::endl;
+	std::cout << "Min test : " << Fixed::min( c, d ) << std::endl;
 	d = 10;
 	std::cout << "10 == 10 = "<< (c == d) << std::endl;
 	
