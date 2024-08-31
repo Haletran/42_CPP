@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:21 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/30 12:51:16 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/31 13:21:02 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class ClapTrap {
     int get_attack();
 
     
-  private:
+  protected:
     std::string name;
     int _hit_points;
     int _energy_points;

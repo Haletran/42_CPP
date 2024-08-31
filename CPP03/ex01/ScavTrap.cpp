@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:25:52 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/30 12:51:18 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/08/31 13:21:17 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ScavTrap::ScavTrap(std::string name)
 {
     std::cout << "Scvatrap " << name << "created" << std::endl;
+    this->
 }
 
 ScavTrap::~ScavTrap()
