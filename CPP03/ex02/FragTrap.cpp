@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 13:18:07 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 11:58:38 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:42:31 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys(void)
 {
+    if (this->_hit_points <= 0)
+    { std::cout << "FragTrap" << this->name << " cannot do a high five !" << std::endl; return; }
     std::cout << "FragTrap " << name << " want to do a high five 🫸 " << std::endl;
 }
 

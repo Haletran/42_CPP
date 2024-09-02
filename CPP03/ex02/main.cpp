@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:55 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 12:11:25 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:46:04 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,16 @@ int main(void)
     bernard.beRepaired(2);
     bernard.beRepaired(1);
     bernard.takeDamage(10);
+    bernard.takeDamage(100);
 
     michel.attack("enemi");
     michel.guardGate();
+    michel.takeDamage(100);
+    michel.guardGate();
+
     michel.beRepaired(2);
     louis.highFivesGuys();
+    bernard.takeDamage(10);
 
     
 

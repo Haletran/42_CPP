@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:25:52 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 13:01:22 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:47:48 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &src)
 
 void ScavTrap::guardGate()
 {
-    std::cout << "GATE-KEEPER MODE : activated" << std::endl;
+    if (this->_hit_points <= 0)
+    {   std::cout << "[ GATE-KEEPER MODE of " <<  this->name << " ] : cannot be activated" << std::endl; return; }
+    std::cout << "[ GATE-KEEPER MODE of " << this->name << " ] : activated" << std::endl;
 }
 
 
 void ScavTrap::attack(const std::string& target)
 {
+    if (this->_hit_points <= 0)
+    {   std::cout << "ScavTrap" << this->name << " has been defeated or is out of health." << std::endl; return; }
     if (this->_energy_points <= 0)
         std::cout << "ScavTrap " << this->name << " has not enough energy to attack" << std::endl;
     else 

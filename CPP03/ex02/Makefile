@@ -6,14 +6,14 @@
 #    By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 09:55:24 by bapasqui          #+#    #+#              #
-#    Updated: 2024/09/02 11:11:49 by bapasqui         ###   ########.fr        #
+#    Updated: 2024/09/02 14:41:51 by bapasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = claptrap
+NAME = fragtrap
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)

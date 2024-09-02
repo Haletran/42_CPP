@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:58 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 14:10:33 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:46:31 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 
     before = this->_energy_points;
     if (this->_hit_points <= 0)
-        std::cout << "ClapTrap " << this->name << "cannot get bring back from the dead" << std::endl;
+        std::cout << "ClapTrap " << this->name << " cannot get bring back from the dead" << std::endl;
     else if ((int)amount < 0)
         std::cout << "Error: Amount cannot be less than 0." << std::endl;
     else if (this->_hit_points == 10)
