@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:25:52 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/31 13:56:47 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:13:25 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 ScavTrap::ScavTrap(std::string name) :ClapTrap(name)
 {
-    std::cout << "Scavtrap " << name << " created" << std::endl;
     this->_attack_damage = 20;
     this->_hit_points = 100;
     this->_energy_points = 50;
-    this->name = name;
+    if (name.empty())
+        this->name = "Unknown";
+    else
+        this->name = name;
+    std::cout << "Scavtrap " << this->name << " created" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "Thank you for your service " << name << " 🫡" << std::endl;
+    std::cout << "Thank you for your service " << this->name << " 🫡" << std::endl;
 }
 
 
@@ -48,12 +51,15 @@ void ScavTrap::guardGate()
 
 void ScavTrap::attack(const std::string& target)
 {
-    if (this->_energy_points == 0)
+    if (this->_energy_points <= 0)
         std::cout << "ScavTrap " << this->name << " has not enough energy to attack" << std::endl;
     else 
     {
         this->_energy_points--;
-        std::cout << "ScavTrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
+        if (target.empty())
+            std::cout << "Claptrap " << this->name << " attacks but there is no target, causing "<< this->_attack_damage << " points of damage !" << std::endl;
+        else
+            std::cout << "ScavTrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
         if (this->_attack_damage == 0)
             std::cout << "It's not very effective..." << std::endl;
     }

@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:58 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/31 12:45:08 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:12:57 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void ClapTrap::attack(const std::string& target)
     else 
     {
         this->_energy_points--;
-        std::cout << "Claptrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
+        if (target.empty())
+            std::cout << "Claptrap " << this->name << " attacks but there is no target, causing "<< this->_attack_damage << " points of damage !" << std::endl;
+        else
+            std::cout << "Claptrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
         if (this->_attack_damage == 0)
             std::cout << "It's not very effective..." << std::endl;
     }
@@ -54,6 +57,8 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+    if (amount < 0)
+        std::cout << "Error: Amount cannot be less than 0." << std::endl;
     if (this->_hit_points == 0)
         std::cout << "ClapTrap " << name << "is already dead. STOP" << std::endl;
     this->_hit_points -= amount;
@@ -69,6 +74,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     int before;
 
+    if (amount < 0)
+        std::cout << "Error: Amount cannot be less than 0." << std::endl;
     before = this->_energy_points;
     if (this->_hit_points == 10)
         std::cout << "ClapTrap " << this->name << "is already full life" << std::endl;

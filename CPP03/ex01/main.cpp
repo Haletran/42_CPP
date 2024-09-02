@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:55 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/08/31 13:11:38 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:07:53 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main(void)
     bernard.takeDamage(10);
 
     michel.attack("enemi");
+    michel.guardGate();
     michel.beRepaired(2);
 
     return (0);
