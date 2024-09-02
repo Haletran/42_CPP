@@ -12,9 +12,14 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog") {}
+Dog::Dog() : Animal("Dog")
+{
+    this->_brain = new Brain();
+}
 
-Dog::~Dog(){}
+Dog::~Dog(){
+    delete _brain;
+}
 
 Dog::Dog(const Dog& cpy)
 {
@@ -27,7 +32,6 @@ Dog& Dog::operator=(const Dog& src)
         this->type = src.getType();
     return (*this);
 }
-
 
 void Dog::makeSound() const
 {

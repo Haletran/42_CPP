@@ -18,6 +18,7 @@
 
 int main()
 {
+    Animal* animals[100];
     const Animal* meta = new Animal();
     const WrongAnimal* test = new WrongCat();
     const Animal* j = new Dog();
@@ -32,10 +33,24 @@ int main()
     meta->makeSound();
     test->makeSound();
 
+    for (int i = 0; i < 100; i++)
+    {
+        if (i < 50)
+            animals[i] = new Cat();
+        else
+            animals[i] = new Dog();
+    }
+
+
+    for (int i = 0; i < 100; i++) {
+        std::cout << "this is a " << animals[i]->getType() << std::endl;
+        animals[i]->makeSound();
+        delete animals[i];
+    }
+
     delete i;
     delete j;
     delete test;
     delete meta;
-
     return (0);
 }

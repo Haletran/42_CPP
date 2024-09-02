@@ -12,9 +12,14 @@
 
 #include "Cat.hpp"
 
-Cat::Cat()  : Animal("Cat") {}
+Cat::Cat()  : Animal("Cat")
+{
+    this->_brain = new Brain();
+}
 
-Cat::~Cat() {}
+Cat::~Cat() {
+    delete _brain;
+}
 
 Cat::Cat(const Cat& cpy)
 {
