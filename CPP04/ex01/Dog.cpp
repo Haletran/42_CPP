@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 11:15:42 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 12:01:54 by bapasqui         ###   ########.fr       */
+/*   Created: 2024/09/02 11:17:43 by bapasqui          #+#    #+#             */
+/*   Updated: 2024/09/02 12:15:55 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#include "Dog.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+Dog::Dog() : Animal("Dog") {}
 
-class Dog : public Animal {
-    public:
-        Dog();
-        Dog(const Dog& cpy);
-        Dog& operator=(const Dog& src);
-        ~Dog();
-        void makeSound() const;
-    private:
-        Brain* Brain;
-};
+Dog::~Dog(){}
 
-#endif
+Dog::Dog(const Dog& cpy)
+{
+    *this = cpy;
+}
+
+Dog& Dog::operator=(const Dog& src)
+{
+    if (this != &src)
+        this->type = src.getType();
+    return (*this);
+}
+
+
+void Dog::makeSound() const
+{
+    std::cout << "* Waf Waf *" << std::endl;
+}

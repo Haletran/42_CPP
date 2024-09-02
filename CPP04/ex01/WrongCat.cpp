@@ -12,16 +12,9 @@
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal("WrongCat")
-{
+WrongCat::WrongCat() : WrongAnimal("WrongCat") {}
 
-}
-
-WrongCat::~WrongCat()
-{
-
-}
-
+WrongCat::~WrongCat() {}
 
 WrongCat::WrongCat(const WrongCat& cpy) : WrongAnimal(cpy)
 {
@@ -31,6 +24,6 @@ WrongCat::WrongCat(const WrongCat& cpy) : WrongAnimal(cpy)
 WrongCat& WrongCat::operator=(const WrongCat& src)
 {
     if (this != &src)
-        *this = src;
+        this->type = src.getType();
     return (*this);
 }

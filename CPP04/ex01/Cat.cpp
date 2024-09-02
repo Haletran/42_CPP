@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 11:15:42 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 12:01:54 by bapasqui         ###   ########.fr       */
+/*   Created: 2024/09/02 11:17:40 by bapasqui          #+#    #+#             */
+/*   Updated: 2024/09/02 12:15:11 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#include "Cat.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+Cat::Cat()  : Animal("Cat") {}
 
-class Dog : public Animal {
-    public:
-        Dog();
-        Dog(const Dog& cpy);
-        Dog& operator=(const Dog& src);
-        ~Dog();
-        void makeSound() const;
-    private:
-        Brain* Brain;
-};
+Cat::~Cat() {}
 
-#endif
+Cat::Cat(const Cat& cpy)
+{
+    *this = cpy;
+}
+
+Cat& Cat::operator=(const Cat& src)
+{
+    if (this != &src)
+        this->type = src.getType();
+    return (*this);
+}
+
+
+void Cat::makeSound() const
+{
+    std::cout << "* Miaou Miaou *" << std::endl;
+}

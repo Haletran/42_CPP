@@ -12,20 +12,25 @@
 
 #include "Animal.hpp"
 
-Animal::Animal()
-{
+Animal::Animal() {}
 
-}
-
-Animal::~Animal()
-{
-
-
-}
+Animal::~Animal() {}
 
 Animal::Animal(std::string type)
 {
     this->type = type;
+}
+
+Animal::Animal(const Animal& cpy)
+{
+    *this = cpy;
+}
+
+Animal &Animal::operator=(const Animal& src)
+{
+    if (this != &src)
+        this->type = src.getType();
+    return (*this);
 }
 
 std::string Animal::getType() const
@@ -34,10 +39,6 @@ std::string Animal::getType() const
         return ("Random Animal");
     return (this->type);
 }
-
-/* void Animal::setType(std::string& type)
-{
-} */
 
 void Animal::makeSound() const
 {
