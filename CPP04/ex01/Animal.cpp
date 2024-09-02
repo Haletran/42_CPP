@@ -1,27 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 11:15:42 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 12:01:54 by bapasqui         ###   ########.fr       */
+/*   Created: 2024/09/02 11:17:36 by bapasqui          #+#    #+#             */
+/*   Updated: 2024/09/02 12:17:44 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
-
 #include "Animal.hpp"
 
-class Dog : public Animal {
-    public:
-        Dog();
-        Dog(const Dog& cpy);
-        Dog& operator=(const Dog& src);
-        ~Dog();
-        void makeSound() const;
-};
+Animal::Animal()
+{
 
-#endif
+}
+
+Animal::~Animal()
+{
+
+
+}
+
+Animal::Animal(std::string type)
+{
+    this->type = type;
+}
+
+std::string Animal::getType() const
+{
+    if (type.empty())
+        return ("Random Animal");
+    return (this->type);
+}
+
+/* void Animal::setType(std::string& type)
+{
+} */
+
+void Animal::makeSound() const
+{
+    std::cout << "* Random Animal noise *" << std::endl;
+}

@@ -12,19 +12,24 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
-{
+Dog::Dog() : Animal("Dog") {}
 
+Dog::~Dog(){}
+
+Dog::Dog(const Dog& cpy)
+{
+    *this = cpy;
 }
 
-Dog::~Dog()
+Dog& Dog::operator=(const Dog& src)
 {
-
+    if (this != &src)
+        this->type = src.getType();
+    return (*this);
 }
 
-void Dog::makeSound() const 
+
+void Dog::makeSound() const
 {
     std::cout << "* Waf Waf *" << std::endl;
 }
-
-

@@ -22,7 +22,6 @@ int main()
     const WrongAnimal* test = new WrongCat();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
-    meta = j;
     std::cout << "this is a " << meta->getType() << " " << std::endl;
     std::cout << "this is a " << j->getType() << " " << std::endl;
     std::cout << "this is a " << i->getType() << " " << std::endl;

@@ -27,18 +27,17 @@ WrongAnimal::WrongAnimal(const WrongAnimal& cpy)
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal& src)
 {
     if (this != &src)
-        this->type = src.getType();
+        *this = src;
     return (*this);
-}
-
-void WrongAnimal::makeSound() const
-{
-    std::cout << "* Wrong Animal noise" << std::endl;
 }
 
 std::string WrongAnimal::getType() const
 {
-    if (type.empty())
+    if (this->type.empty())
         return ("Wrong Animal");
     return (this->type);
+}
+
+void WrongAnimal::makeSound() const{
+    std::cout << "* Meuh Meuh *" << std::endl;
 }

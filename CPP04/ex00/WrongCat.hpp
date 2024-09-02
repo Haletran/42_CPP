@@ -13,11 +13,10 @@
 #ifndef WRONG_CAT_HPP
 #define WRONG_CAT_HPP
 
-#include <iostream>
-#include "WrongAnimal.cpp"
+#include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal {
-    public: 
+    public:
         WrongCat();
         WrongCat(const WrongCat& cpy);
         WrongCat& operator=(const WrongCat& src);

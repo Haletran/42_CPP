@@ -12,14 +12,22 @@
 
 #include "Cat.hpp"
 
-Cat::Cat()  : Animal("Cat")
+Cat::Cat()  : Animal("Cat") {}
+
+Cat::~Cat() {}
+
+Cat::Cat(const Cat& cpy)
 {
+    *this = cpy;
 }
 
-Cat::~Cat()
+Cat& Cat::operator=(const Cat& src)
 {
-    
+    if (this != &src)
+        this->type = src.getType();
+    return (*this);
 }
+
 
 void Cat::makeSound() const
 {
