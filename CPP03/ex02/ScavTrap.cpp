@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:25:52 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 12:13:25 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 13:01:22 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void ScavTrap::attack(const std::string& target)
     {
         this->_energy_points--;
         if (target.empty())
-            std::cout << "Claptrap " << this->name << " attacks but there is no target, causing "<< this->_attack_damage << " points of damage !" << std::endl;
+            std::cout << "Scavtrap " << this->name << " attacks but there is no target, causing "<< this->_attack_damage << " points of damage !" << std::endl;
         else
             std::cout << "ScavTrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
         if (this->_attack_damage == 0)

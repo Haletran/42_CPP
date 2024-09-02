@@ -6,7 +6,7 @@
 /*   By: bapasqui <bapasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:55:58 by bapasqui          #+#    #+#             */
-/*   Updated: 2024/09/02 12:16:29 by bapasqui         ###   ########.fr       */
+/*   Updated: 2024/09/02 13:57:24 by bapasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap(std::string name)
     this->_attack_damage = 0;
     this->_energy_points = 10;
     this->_hit_points= 10;
-    std::cout << BG_AMBER200 "Go ClapTrap " << name << "!" RESET<< std::endl;
+    std::cout << BG_AMBER100 "Go ClapTrap " << name << "!" RESET<< std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -38,33 +38,36 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& src)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &src)
-        *this = src;
+    {
+        this->_attack_damage = src.get_attack();
+        this->name = src.name;
+        this->_energy_points = src.get_energy();
+        this->_hit_points = src.get_life();
+    }
     return (*this);
 }
 
 void ClapTrap::attack(const std::string& target)
 {
-    if (this->_energy_points == 0)
-        std::cout << "ClapTrap " << this->name << " has not enough energy to attack" << std::endl;
-    else 
-    {
-        this->_energy_points--;
-        if (target.empty())
-            std::cout << "Claptrap " << this->name << " attacks but there is no target, causing "<< this->_attack_damage << " points of damage !" << std::endl;
-        else
-            std::cout << "Claptrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
-        if (this->_attack_damage == 0)
-            std::cout << "It's not very effective..." << std::endl;
-    }
-
+    if (this->_hit_points <= 0)
+    {   std::cout << "ClapTrap " << this->name << " has been defeated or is out of health." << std::endl; return; }
+    if (this->_energy_points <= 0)
+    {   std::cout << "ClapTrap " << this->name << " has not enough energy to attack" << std::endl; return; }
+    this->_energy_points--;
+    if (target.empty())
+        std::cout << "Claptrap " << this->name << " attacks but there is no target, causing "<< this->_attack_damage << " points of damage !" << std::endl;
+    else
+        std::cout << "Claptrap " << this->name << " attacks " << target << " causing "<< this->_attack_damage << " points of damage !" << std::endl;
+    if (this->_attack_damage <= 0)
+        std::cout << "It's not very effective..." << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (amount < 0)
-        std::cout << "Error: Amount cannot be less than 0." << std::endl;
-    if (this->_hit_points == 0)
-        std::cout << "ClapTrap " << name << "is already dead. STOP" << std::endl;
+    if ((int)amount < 0)
+    { std::cout << "Error: Amount cannot be less than 0." << std::endl; return; }
+    else if (this->_hit_points <= 0)
+    { std::cout << "ClapTrap " << name << " is already dead. STOP" << std::endl; return ; }
     this->_hit_points -= amount;
     std::cout << "ClapTrap " << this->name << " lost " RED300 <<  amount <<  " ♥️ " RESET;
     if (this->_hit_points <= 0)
@@ -78,30 +81,29 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     int before;
 
-    if (amount < 0)
-        std::cout << "Error: Amount cannot be less than 0." << std::endl;
     before = this->_energy_points;
-    if (this->_hit_points == 10)
+    if (this->_hit_points <= 0)
+        std::cout << "ClapTrap " << this->name << "cannot get bring back from the dead" << std::endl;
+    else if ((int)amount < 0)
+        std::cout << "Error: Amount cannot be less than 0." << std::endl;
+    else if (this->_hit_points == 10)
         std::cout << "ClapTrap " << this->name << "is already full life" << std::endl;
+    else if (this->_energy_points <= 0)
+        std::cout << "ClapTrap " << this->name << " has no energy left" << std::endl;
+    else if (before - (int)amount < 0)
+        std::cout << "ClapTrap " << this->name << " has not enough energy to heal" << std::endl;
     else
     {
-        if (this->_energy_points <= 0)
-            std::cout << "ClapTrap " << this->name << " has no energy left" << std::endl;
-        else if (before - (int)amount < 0)
-            std::cout << "ClapTrap " << this->name << " has not enough energy to heal" << std::endl;
-        else
-        {
-            this->_hit_points += amount;
-            for(int i = 0; i < (int)amount; i++)
-                this->_energy_points--;
-            std::cout << "ClapTrap " << this->name  << " gained " GREEN300 << amount << " ♥️ " RESET;
-            std::cout << " and lost " RED300 << before - this->_energy_points << "%" RESET <<std::endl;
-        }
+        this->_hit_points += amount;
+        for(int i = 0; i < (int)amount; i++)
+            this->_energy_points--;
+        std::cout << "ClapTrap " << this->name  << " gained " GREEN300 << amount << " ♥️ " RESET;
+        std::cout << " and lost " RED300 << before - this->_energy_points << "%" RESET <<std::endl;
     }
 }
 
 // GETTER
 std::string ClapTrap::get_name() {return(this->name);}
-int ClapTrap::get_life(){return (this->_hit_points);}
-int ClapTrap::get_energy() {return (this->_energy_points);}
-int  ClapTrap::get_attack(){return (this->_attack_damage);}
+int ClapTrap::get_life() const{return (this->_hit_points);}
+int ClapTrap::get_energy() const{return (this->_energy_points);}
+int  ClapTrap::get_attack() const{return (this->_attack_damage);}
