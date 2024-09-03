@@ -85,7 +85,7 @@ void ClapTrap::beRepaired(unsigned int amount)
         std::cout << "ClapTrap " << this->name << "cannot get bring back from the dead" << std::endl;
     else if ((int)amount < 0)
         std::cout << "Error: Amount cannot be less than 0." << std::endl;
-    else if (this->_hit_points == 10)
+    else if (this->_hit_points >= 10)
         std::cout << "ClapTrap " << this->name << "is already full life" << std::endl;
     else if (this->_energy_points <= 0)
         std::cout << "ClapTrap " << this->name << " has no energy left" << std::endl;
@@ -94,7 +94,8 @@ void ClapTrap::beRepaired(unsigned int amount)
     else
     {
         this->_hit_points += amount;
-        this->_energy_points--;
+        if (amount > 0 )
+            this->_energy_points--;
         std::cout << "ClapTrap " << this->name  << " gained " GREEN300 << amount << " ♥️ " RESET;
         std::cout << " and lost " RED300 << before - this->_energy_points << "%" RESET <<std::endl;
     }
