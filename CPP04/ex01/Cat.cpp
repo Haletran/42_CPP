@@ -29,7 +29,10 @@ Cat::Cat(const Cat& cpy)
 Cat& Cat::operator=(const Cat& src)
 {
     if (this != &src)
+    {
         this->type = src.getType();
+        this->_brain = src._brain;
+    }
     return (*this);
 }
 

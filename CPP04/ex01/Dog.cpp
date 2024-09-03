@@ -29,7 +29,10 @@ Dog::Dog(const Dog& cpy)
 Dog& Dog::operator=(const Dog& src)
 {
     if (this != &src)
+    {
         this->type = src.getType();
+        this->_brain = src._brain;
+    }
     return (*this);
 }
 

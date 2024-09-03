@@ -17,7 +17,8 @@ Dog::Dog() : Animal("Dog")
     this->_brain = new Brain();
 }
 
-Dog::~Dog(){
+Dog::~Dog()
+{
     delete _brain;
 }
 
@@ -29,7 +30,10 @@ Dog::Dog(const Dog& cpy) : Animal(cpy)
 Dog& Dog::operator=(const Dog& src)
 {
     if (this != &src)
+    {
         this->type = src.getType();
+        this->_brain = src._brain;
+    }
     return (*this);
 }
 
