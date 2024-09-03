@@ -31,13 +31,17 @@ FragTrap::FragTrap(FragTrap const &cpy) : ClapTrap(cpy)
 
 FragTrap &FragTrap::operator=(FragTrap const &src)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &src)
-        *this = src;
+    {
+        this->name = src.name;
+        this->_hit_points = src.get_life();
+        this->_attack_damage = src.get_attack();
+        this->_energy_points = src.get_energy();
+    }
     return (*this);
 }
 
-FragTrap::~FragTrap() 
+FragTrap::~FragTrap()
 {
     std::cout << "FragTrap " << name << " has dispawned" << std::endl;
 }
@@ -48,4 +52,3 @@ void FragTrap::highFivesGuys(void)
     { std::cout << "FragTrap" << this->name << " cannot do a high five !" << std::endl; return; }
     std::cout << "FragTrap " << name << " want to do a high five 🫸 " << std::endl;
 }
-

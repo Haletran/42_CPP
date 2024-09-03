@@ -41,7 +41,5 @@ int main(void)
     louis.highFivesGuys();
     bernard.takeDamage(10);
 
-    
-
     return (0);
 }

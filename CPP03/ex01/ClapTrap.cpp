@@ -36,7 +36,6 @@ ClapTrap::ClapTrap(const ClapTrap& cpy)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap& src)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &src)
     {
         this->_attack_damage = src.get_attack();
@@ -72,7 +71,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     std::cout << "ClapTrap " << this->name << " lost " RED300 <<  amount <<  " ♥️ " RESET;
     if (this->_hit_points <= 0)
         std::cout <<  " and" RED500 << " died (RIP)" RESET<< std::endl;
-    else 
+    else
         std::cout << std::endl;
 }
 
@@ -95,8 +94,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     else
     {
         this->_hit_points += amount;
-        for(int i = 0; i < (int)amount; i++)
-            this->_energy_points--;
+        this->_energy_points--;
         std::cout << "ClapTrap " << this->name  << " gained " GREEN300 << amount << " ♥️ " RESET;
         std::cout << " and lost " RED300 << before - this->_energy_points << "%" RESET <<std::endl;
     }

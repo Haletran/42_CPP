@@ -37,9 +37,13 @@ ScavTrap::ScavTrap(ScavTrap const &cpy) : ClapTrap(cpy)
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &src)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &src)
-        *this = src;
+    {
+        this->name = src.name;
+        this->_hit_points = src.get_life();
+        this->_energy_points = src.get_energy();
+        this->_attack_damage = src.get_attack();
+    }
     return (*this);
 }
 
@@ -57,7 +61,7 @@ void ScavTrap::attack(const std::string& target)
     {   std::cout << "ScavTrap" << this->name << " has been defeated or is out of health." << std::endl; return; }
     if (this->_energy_points <= 0)
         std::cout << "ScavTrap " << this->name << " has not enough energy to attack" << std::endl;
-    else 
+    else
     {
         this->_energy_points--;
         if (target.empty())
@@ -68,4 +72,3 @@ void ScavTrap::attack(const std::string& target)
             std::cout << "It's not very effective..." << std::endl;
     }
 }
- 
