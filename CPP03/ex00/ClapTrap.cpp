@@ -21,7 +21,7 @@ ClapTrap::ClapTrap(std::string name)
     this->_attack_damage = 0;
     this->_energy_points = 10;
     this->_hit_points= 10;
-    std::cout << BG_AMBER100 "Go ClapTrap " << name << "!" RESET<< std::endl;
+    std::cout << BG_AMBER500 "Go ClapTrap " << name << "!" RESET<< std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -72,7 +72,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     std::cout << "ClapTrap " << this->name << " lost " RED300 <<  amount <<  " ♥️ " RESET;
     if (this->_hit_points <= 0)
         std::cout <<  " and" RED500 << " died (RIP)" RESET<< std::endl;
-    else 
+    else
         std::cout << std::endl;
 }
 
