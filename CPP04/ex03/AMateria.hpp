@@ -9,7 +9,7 @@ class AMateria
     private:
         AMateria();
     protected:
-        std::string type;
+        std::string _type;
     public:
         // COPLIAN
         AMateria(std::string const & type);
@@ -17,7 +17,7 @@ class AMateria
         AMateria& operator=(const AMateria& src);
         virtual ~AMateria();
 
-
+        // FUNCTIONS
         std::string const & getType() const;
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
