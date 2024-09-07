@@ -1,7 +1,9 @@
 ## Notes for ex03
 
 An ```interface``` is using abstract classes which contains pure virtual functions.
-For example :
+<br>
+
+<ins>For example :</ins>
 ```c++
 class Interface {
     public:
@@ -16,7 +18,7 @@ functions and declaring those.
 They just follow the same model,
 but you can still add elements to the class that inherit from the interface.
 
-For example :
+<ins>For example :</ins>
 ```c++
 // Keeping in mind the Interface created earlier
 class Test : public Interface { // It does inherit from the interface
@@ -31,4 +33,5 @@ class Test : public Interface { // It does inherit from the interface
 ```
 
 So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` that himself inherit from the interface ```IMateriaSource```.
-Same for ```Character``` class that inherit from ```ICharacter```
+<br>
+Same for ```Character``` class that inherit from ```ICharacter```.
