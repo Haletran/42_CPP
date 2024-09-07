@@ -14,7 +14,7 @@ CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = farm
-SRC = main.cpp IMateriaSource.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp
+SRC = main.cpp IMateriaSource.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

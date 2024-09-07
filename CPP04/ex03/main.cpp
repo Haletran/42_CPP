@@ -12,9 +12,8 @@
 
 #include "Cure.hpp"
 #include "Ice.hpp"
-#include "IMateria_Source.hpp"
-#include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "Character.hpp"
 
 int main()
 {

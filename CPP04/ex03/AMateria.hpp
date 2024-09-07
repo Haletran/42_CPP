@@ -1,10 +1,13 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
+class IMateriaSource;
 #include <iostream>
+#include "IMateria_Source.hpp"
+class ICharacter;
 #include "ICharacter.hpp"
 
-class AMateria
+class AMateria : public IMateriaSource
 {
     private:
         AMateria();
