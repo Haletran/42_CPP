@@ -32,6 +32,6 @@ class Test : public Interface { // It does inherit from the interface
 };
 ```
 
-So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` that himself inherit from the interface ```IMateriaSource```.
+So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` (AMateria is not an abstract nonetheless) <br> that himself inherit from the interface ```IMateriaSource```.
 <br>
 Same for ```Character``` class that inherit from ```ICharacter```.
