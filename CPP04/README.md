@@ -1,6 +1,6 @@
 ## Notes for ex03
 
-An interface is using abstract classes which contains pure virtual functions.
+An ```interface``` is using abstract classes which contains pure virtual functions.
 For example :
 ```c++
 class Interface {
@@ -31,3 +31,4 @@ class Test : public Interface { // It does inherit from the interface
 ```
 
 So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` that himself inherit from the interface ```IMateriaSource```.
+Same for ```Character``` class that inherit from ```ICharacter```
