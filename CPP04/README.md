@@ -1,10 +1,12 @@
 ## Notes for ex03
 
-An ```interface``` is using abstract classes which contains pure virtual functions.
+An ```interface``` is using abstract classes which contains pure virtual functions.<br>
 So the class that inherit from the interface, needs to implement those functions.
-because if you don't the class is considered abstract.
+because if you don't the class is considered ```abstract```.
 <br>
-The interface does not implement his functions.
+<br>
+The interface ``does not implement`` his functions, so you don't need to create a ```CPP
+file``` for the interface.
 <br>
 
 <ins>For example :</ins>
@@ -36,14 +38,13 @@ class Test : public Interface { // It does inherit from the interface
 };
 ```
 
-So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` (AMateria is an abstract class).
-<br>
-```MateriaSource``` inherit from ```AMateriaSource```.
-<br>
-Same for ```Character``` class that inherit from ```ICharacter``` (abstract and virtual).
+So in this exercise: 
+- ```Cure``` and ```Ice``` spell inherit from ```AMateria``` (AMateria is an abstract class).
+- ```MateriaSource``` inherit from ```AMateriaSource```.
+- Same for ```Character``` class that inherit from ```ICharacter``` (abstract and virtual).
 
 
-TODO :
+[ TODO ] :
 
 - add message for MateriaSource
 - add stocking drop materias for Character
