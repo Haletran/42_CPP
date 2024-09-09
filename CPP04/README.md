@@ -1,6 +1,9 @@
 ## Notes for ex03
 
 An ```interface``` is using abstract classes which contains pure virtual functions.
+So the class that inherit from the interface, needs to implement those functions.
+<br>
+But the interface does not implement those functions.
 <br>
 
 <ins>For example :</ins>
@@ -37,3 +40,15 @@ So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` 
 ```MateriaSource``` inherit from ```AMateriaSource```.
 <br>
 Same for ```Character``` class that inherit from ```ICharacter``` (abstract and virtual).
+
+
+You need to implement all the functions of the virtual that inherit the class or the compilator is going to
+think that the class is abstract.
+
+TODO :
+
+- add message for MateriaSource
+- add stocking drop materias for Character
+- Remove msg destructor and constructor
+- if / else statement protection
+- might need to check copy constructor (dont know if it works)

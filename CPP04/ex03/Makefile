@@ -13,8 +13,8 @@
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = farm
-SRC = main.cpp IMateriaSource.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp
+NAME = ff7
+SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -1,18 +1,19 @@
 #ifndef ICE_HPP
 #define ICE_HPP
 
-class AMateria;
+#include <iostream>
 #include "AMateria.hpp"
 
 class Ice : public AMateria {
-public:
-    Ice();
-    Ice(const Ice& src);
-    Ice& operator=(const Ice& cpy);
-    virtual ~Ice();
-
-    AMateria* clone() const override;
-    void use(ICharacter& target) override;
+    public:
+        Ice();
+        Ice(const Ice &src);
+        Ice &operator=(const Ice &cpy);
+        Ice *clone() const;
+        void use(ICharacter &target);
+        virtual ~Ice();
 };
+
+
 
 #endif

@@ -1,39 +1,48 @@
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
+#include "Colors.hpp"
 
-AMateria::AMateria(std::string const& type) : _type(type) {}
 
 AMateria::~AMateria()
 {
-    std::cout << "Destructor" << std::endl;
+    std::cout << "AMateria of type";
+    if (type == "ice")
+        std::cout << SKY500 " Ice " RESET << "was destroyed" << std::endl;
+    else if (type == "cure")
+        std::cout << YELLOW500 " Cure " RESET << "was destroyed" << std::endl;
+    else
+        std::cout << RED300 "Unknown" RESET << "was destroyed" << std::endl;
 }
 
-AMateria::AMateria(const AMateria& cpy)
+AMateria::AMateria(std::string const &type)
 {
-    *this = cpy;
+    std::cout << "AMateria of type";
+    if (type == "ice")
+        std::cout << SKY500 " Ice " RESET << "created" << std::endl;
+    else if (type == "cure")
+        std::cout << YELLOW500 " Cure " RESET << "created" << std::endl;
+    else
+        std::cout << RED300 " Unknown " RESET << "created" << std::endl;
+    this->type = type; // i know i can put it next to the function
 }
 
-AMateria& AMateria::operator=(const AMateria& src)
+AMateria::AMateria(const AMateria &src)
 {
-    if (this != &src)
-        this->_type = src._type;
-    return(*this);
+    this->type = src.type;
 }
 
-std::string const & AMateria::getType() const
+AMateria& AMateria::operator=(const AMateria& cpy)
 {
-    return this->_type;
+    if (this != &cpy)
+        this->type = cpy.type;
+    return (*this);
 }
 
-AMateria* AMateria::clone() const
+std::string const &AMateria::getType() const
 {
-    return new AMateria(*this);
+	return(this->type);
 }
 
-void AMateria::use(ICharacter& target)
+void AMateria::use(ICharacter &target)
 {
-    if (this->_type == "ice")
-        std::cout << "* shoots an ice bolt at" << target.getName() << std::endl;
-    else if (this->_type == "cure")
-        std::cout << "* heals" << target.getName() << std::endl;
+    std::cout << "Using AMateria on " << target.getName() << std::endl;
 }

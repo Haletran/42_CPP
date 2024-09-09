@@ -1,29 +1,28 @@
 #ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+# define AMATERIA_HPP
 
-class IMateriaSource;
 #include <iostream>
-#include "IMateria_Source.hpp"
-class ICharacter;
+#include "Colors.hpp"
+
 #include "ICharacter.hpp"
 
-class AMateria : public IMateriaSource
+class AMateria
 {
-    private:
-        AMateria();
     protected:
-        std::string _type;
+        std::string type;
     public:
-        // COPLIAN
-        AMateria(std::string const & type);
-        AMateria(const AMateria& cpy);
-        AMateria& operator=(const AMateria& src);
-        virtual ~AMateria();
-
         // FUNCTIONS
         std::string const & getType() const;
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
+
+        // COPLIAN
+        AMateria(std::string const & type);
+       	AMateria(AMateria const &src);
+        AMateria &operator=(const AMateria &cpy);
+        virtual ~AMateria();
 };
+
+
 
 #endif
