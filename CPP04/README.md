@@ -2,8 +2,9 @@
 
 An ```interface``` is using abstract classes which contains pure virtual functions.
 So the class that inherit from the interface, needs to implement those functions.
+because if you don't the class is considered abstract.
 <br>
-But the interface does not implement those functions.
+The interface does not implement his functions.
 <br>
 
 <ins>For example :</ins>
@@ -41,9 +42,6 @@ So in this exercise, ```Cure``` and ```Ice``` spell inherit from ```AMateria``` 
 <br>
 Same for ```Character``` class that inherit from ```ICharacter``` (abstract and virtual).
 
-
-You need to implement all the functions of the virtual that inherit the class or the compilator is going to
-think that the class is abstract.
 
 TODO :
 
