@@ -38,7 +38,7 @@ class Test : public Interface { // It does inherit from the interface
 };
 ```
 
-So in this exercise: 
+So in this exercise:
 - ```Cure``` and ```Ice``` spell inherit from ```AMateria``` (AMateria is an abstract class).
 - ```MateriaSource``` inherit from ```AMateriaSource```.
 - Same for ```Character``` class that inherit from ```ICharacter``` (abstract and virtual).
@@ -46,8 +46,5 @@ So in this exercise:
 
 [ TODO ] :
 
-- add message for MateriaSource
-- add stocking drop materias for Character
 - Remove msg destructor and constructor
-- if / else statement protection
 - might need to check copy constructor (dont know if it works)

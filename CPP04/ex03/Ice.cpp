@@ -12,7 +12,9 @@ Ice::~Ice()
 }
 
 
-Ice::Ice(const Ice &src) : AMateria(src) {}
+Ice::Ice(const Ice &src) : AMateria(src) {
+    std::cout << "Ice Materia copy constructor called" << std::endl;
+}
 
 Ice &Ice::operator=(const Ice &cpy)
 {

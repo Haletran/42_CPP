@@ -10,6 +10,7 @@ class AMateria
 {
     protected:
         std::string type;
+        AMateria();
     public:
         // FUNCTIONS
         std::string const & getType() const;

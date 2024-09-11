@@ -10,7 +10,7 @@ AMateria::~AMateria()
     else if (type == "cure")
         std::cout << YELLOW500 " Cure " RESET << "was destroyed" << std::endl;
     else
-        std::cout << RED300 "Unknown" RESET << "was destroyed" << std::endl;
+        std::cout << RED300 " Unknown " RESET << "was destroyed" << std::endl;
 }
 
 AMateria::AMateria(std::string const &type)

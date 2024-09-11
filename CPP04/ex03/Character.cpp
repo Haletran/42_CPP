@@ -1,5 +1,6 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 Character::Character(std::string const & name)
 {
@@ -7,11 +8,27 @@ Character::Character(std::string const & name)
     std::cout << this->_name << " has appeared" << std::endl;
     for (int i = 0; i < 4; i++)
         this->_inventory[i] = NULL;
+    for (int i = 0; i < DROPPING_LIMIT; i++)
+        this->ground[i] = NULL;
 }
 
 Character::Character(const Character &src)
 {
-    *this = src;
+    this->_name = src._name;
+    for (int i = 0; i < 4; i++)
+    {
+        if (src._inventory[i])
+            this->_inventory[i] = src._inventory[i]->clone();
+        else
+            this->_inventory[i] = NULL;
+    }
+    for (int i = 0; i < DROPPING_LIMIT; i++)
+    {
+        if (src.ground[i])
+            this->ground[i] = src.ground[i]->clone();
+        else
+            this->ground[i] = NULL;
+    }
 }
 
 Character &Character::operator=(const Character &cpy)
@@ -19,44 +36,90 @@ Character &Character::operator=(const Character &cpy)
     if (this != &cpy)
     {
         this->_name = cpy._name;
+
         for (int i = 0; i < 4; i++)
-            this->_inventory[i] = cpy._inventory[i];
+        {
+            if (this->_inventory[i])
+                delete this->_inventory[i];
+            if (cpy._inventory[i])
+                this->_inventory[i] = cpy._inventory[i]->clone();
+            else
+                this->_inventory[i] = NULL;
+        }
     }
-    return (*this);
+    return *this;
 }
 
 Character::~Character()
 {
     std::cout << this->_name << " has been destroyed" << std::endl;
-    for (int i = 0; i < 4; i++) // maybe add check if there is a case to delete
-        delete this->_inventory[i];
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->_inventory[i])
+        {
+            delete this->_inventory[i];
+            this->ground[i] = NULL;
+        }
+    }
+    for (int i = 0; i < DROPPING_LIMIT; i++)
+    {
+        if (this->ground[i])
+        {
+            delete this->ground[i];
+            this->ground[i] = NULL;
+        }
+    }
 }
 
 void Character::equip(AMateria* m)
 {
-    for (int i = 0; i < 5; i++)
+    std::cout << this->_name << " equipping materia" << std::endl;
+    for (int i = 0; i < 4; i++)
     {
-        if (i == 5)
-        {
-            delete m;
-            return;
-        }
         if (!this->_inventory[i])
         {
             this->_inventory[i] = m;
+            return;
+        }
+    }
+    std::cout << "Inventory is full deleting materia" << std::endl;
+    delete m;
+}
+
+void Character::add_to_ground(AMateria* m)
+{
+    if (!m)
+        return;
+    for (int i = 0; i < DROPPING_LIMIT; i++)
+    {
+        if (!ground[i])
+        {
+            ground[i] = m->clone();
+            delete m;
             break;
         }
     }
 }
 
+void Character::get_ground()
+{
+    std::cout << "[ GROUND INVENTORY ]" << std::endl;
+    for (int i = 0; i < DROPPING_LIMIT; i++)
+    {
+        if (this->ground[i])
+            std::cout << "[ " << i << " ]" << this->ground[i]->getType() << " materia" << std::endl;
+    }
+}
+
 void Character::unequip(int idx)
 {
-    // need to keep ground inventory, but limit how much the player can drop
-    // check for < 0 or > 4
-    if (this->_inventory[idx])
+    if (idx < 0 || idx > 4)
+        return ;
+    if (this->_inventory[idx] != NULL)
     {
-        std::cout << "Unequipping materia at index " << idx << "in the inventory" << std::endl;
-        this->_inventory[idx] = 0;
+        std::cout << "Unequipping materia at index " << idx << " in the inventory" << std::endl;
+        add_to_ground(this->_inventory[idx]);
+        this->_inventory[idx] = NULL;
     }
     else
         std::cout << "No materia in this slot" << std::endl;
@@ -64,8 +127,14 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (this->_inventory[idx]) // check for < 0 or > 4
+    if (idx < 0 || idx > 4)
+        return ;
+    if (this->_inventory[idx] != NULL)
+    {
         this->_inventory[idx]->use(target);
+        add_to_ground(this->_inventory[idx]);
+        this->_inventory[idx] = NULL;
+    }
     else
         std::cout << "No materia in this slot to use" << std::endl;
 }

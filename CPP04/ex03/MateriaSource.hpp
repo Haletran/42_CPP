@@ -18,7 +18,6 @@ class MateriaSource : public IMateriaSource
         MateriaSource(const MateriaSource& src);
         MateriaSource &operator=(const MateriaSource& cpy);
         virtual ~MateriaSource();
-
 };
 
 

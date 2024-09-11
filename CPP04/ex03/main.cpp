@@ -16,7 +16,6 @@
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
 
-
 int main()
 {
     IMateriaSource* src = new MateriaSource();
@@ -30,14 +29,22 @@ int main()
     me->equip(tmp);
     tmp = src->createMateria("cure");
     me->equip(tmp);
+    me->unequip(1);
+
+    ICharacter* test = new Character("test");
+    delete test;
+    test = me;
+
+    std::cout << "Testing print" << std::endl;
+    test->use(0, *test);
+
 
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
     me->use(1, *bob);
 
-
-    delete bob;
     delete me;
+    delete bob;
     delete src;
     return 0;
 }

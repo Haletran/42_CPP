@@ -2,19 +2,28 @@
 
 MateriaSource::MateriaSource()
 {
+    std::cout << "MateriaSource was constructed" << std::endl;
     for (int i = 0; i < 4; i++)
         this->_stock[i] = NULL;
 }
 
 MateriaSource::~MateriaSource()
 {
-    for (int i = 0; i < 4; i++) // might need to had an if statement
-        delete this->_stock[i];
+    std::cout << "MateriaSource was destroyed" << std::endl;
+    for (int i = 0; i < 4; i++)
+        if (this->_stock[i])
+            delete this->_stock[i];
 }
 
 MateriaSource ::MateriaSource(const MateriaSource& src)
 {
-    *this = src;
+    for (int i = 0; i < 4; i++)
+    {
+        if (src._stock[i])
+            this->_stock[i] = src._stock[i]->clone();
+        else
+            this->_stock[i] = NULL;
+    }
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource& cpy)
@@ -22,27 +31,33 @@ MateriaSource &MateriaSource::operator=(const MateriaSource& cpy)
     if (this != &cpy)
     {
         for (int i = 0; i < 4; i++)
-            this->_stock[i] = cpy._stock[i];
+        {
+            if (cpy._stock[i])
+                this->_stock[i] = cpy._stock[i]->clone();
+            else
+                this->_stock[i] = NULL;
+        }
     }
-    return (*this);
+    return *this;
 }
-
 
 void MateriaSource::learnMateria(AMateria* m)
 {
+    std::cout << "Learning a materia" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         if (!this->_stock[i])
         {
             this->_stock[i] = m;
-            break;
+            return;
         }
     }
-
+    delete m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
+    std::cout << "Creating Materia of type " << type << std::endl;
    	for (int i = 0; i < 4; i++)
 	{
 		if (this->_stock[i] && this->_stock[i]->getType() == type)

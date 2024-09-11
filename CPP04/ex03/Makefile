@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = ff7
 SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
