@@ -6,7 +6,7 @@ Character::Character(std::string const & name)
 {
     this->_name = name;
     std::cout << this->_name << " has appeared" << std::endl;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
         this->_inventory[i] = NULL;
     for (int i = 0; i < DROPPING_LIMIT; i++)
         this->ground[i] = NULL;
@@ -15,7 +15,7 @@ Character::Character(std::string const & name)
 Character::Character(const Character &src)
 {
     this->_name = src._name;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
     {
         if (src._inventory[i])
             this->_inventory[i] = src._inventory[i]->clone();
@@ -37,7 +37,7 @@ Character &Character::operator=(const Character &cpy)
     {
         this->_name = cpy._name;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (this->_inventory[i])
                 delete this->_inventory[i];
@@ -53,7 +53,7 @@ Character &Character::operator=(const Character &cpy)
 Character::~Character()
 {
     std::cout << this->_name << " has been destroyed" << std::endl;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
     {
         if (this->_inventory[i])
         {
@@ -74,7 +74,7 @@ Character::~Character()
 void Character::equip(AMateria* m)
 {
     std::cout << this->_name << " equipping materia" << std::endl;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
     {
         if (!this->_inventory[i])
         {
@@ -94,8 +94,8 @@ void Character::add_to_ground(AMateria* m)
     {
         if (!ground[i])
         {
-            ground[i] = m->clone();
-            delete m;
+            std::cout << "- Adding Materia to the ground -" << std::endl;
+            ground[i] = m;
             break;
         }
     }
@@ -107,13 +107,25 @@ void Character::get_ground()
     for (int i = 0; i < DROPPING_LIMIT; i++)
     {
         if (this->ground[i])
-            std::cout << "[ " << i << " ]" << this->ground[i]->getType() << " materia" << std::endl;
+            std::cout << "[ " << i << " ] : " << this->ground[i]->getType() << " materia" << std::endl;
     }
+}
+
+
+void Character::get_inventory()
+{
+    std::cout << "[ CHARACTER INVENTORY ] : " << this->_name << std::endl;
+    for (int i = 0; i < 3; i++)
+    {
+        if (this->_inventory[i])
+            std::cout << "[ " << i << " ] : " << this->_inventory[i]->getType() << " materia" << std::endl;
+    }
+
 }
 
 void Character::unequip(int idx)
 {
-    if (idx < 0 || idx > 4)
+    if (idx < 0 || idx > 3)
         return ;
     if (this->_inventory[idx] != NULL)
     {
@@ -127,7 +139,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (idx < 0 || idx > 4)
+    if (idx < 0 || idx > 3)
         return ;
     if (this->_inventory[idx] != NULL)
     {
