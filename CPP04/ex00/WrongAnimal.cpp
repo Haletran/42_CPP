@@ -12,33 +12,29 @@
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(){}
-WrongAnimal::~WrongAnimal(){}
-WrongAnimal::WrongAnimal(std::string type)
-{
-    this->type = type;
+WrongAnimal::WrongAnimal() {
+  std::cout << "WrongAnimal constructor called" << std::endl;
+}
+WrongAnimal::~WrongAnimal() {
+  std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& cpy)
-{
-    *this = cpy;
+WrongAnimal::WrongAnimal(std::string type) { this->type = type; }
+
+WrongAnimal::WrongAnimal(const WrongAnimal &cpy) { *this = cpy; }
+
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &src) {
+  if (this != &src)
+    this->type = src.getType();
+  return (*this);
 }
 
-WrongAnimal &WrongAnimal::operator=(const WrongAnimal& src)
-{
-    if (this != &src)
-        this->type = src.getType();
-    return (*this);
+void WrongAnimal::makeSound() const {
+  std::cout << "* Wrong Animal noise *" << std::endl;
 }
 
-void WrongAnimal::makeSound() const
-{
-    std::cout << "* Wrong Animal noise" << std::endl;
-}
-
-std::string WrongAnimal::getType() const
-{
-    if (type.empty())
-        return ("Wrong Animal");
-    return (this->type);
+std::string WrongAnimal::getType() const {
+  if (type.empty())
+    return ("Wrong Animal");
+  return (this->type);
 }

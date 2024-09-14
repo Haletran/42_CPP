@@ -16,19 +16,20 @@
 #include <iostream>
 
 class Animal {
-    public:
-        Animal(std::string type);
-        Animal(const Animal& cpy);
-        Animal& operator=(const Animal& src);
-        virtual ~Animal();
-        std::string getType() const;
-        void setType(std::string &type);
-        virtual void makeSound() const;
-    protected:
-        std::string type;
-    private:
-        Animal();
+public:
+  Animal(std::string type);
+  Animal(const Animal &cpy);
+  Animal &operator=(const Animal &src);
+  virtual ~Animal();
+  std::string getType() const;
+  void setType(std::string &type);
+  virtual void makeSound() const = 0;
 
+protected:
+  std::string type;
+
+private:
+  Animal();
 };
 
 #endif

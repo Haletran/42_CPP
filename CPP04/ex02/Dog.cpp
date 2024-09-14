@@ -11,33 +11,32 @@
 /* ************************************************************************** */
 
 #include "Dog.hpp"
+#include "Animal.hpp"
 
-Dog::Dog() : Animal("Dog")
-{
-    this->_brain = new Brain();
+Dog::Dog() : Animal("Dog") {
+  std::cout << "Dog Default Constructor called" << std::endl;
+  this->_brain = new Brain();
 }
 
-Dog::~Dog()
-{
-    delete _brain;
+Dog::~Dog() {
+  std::cout << "Dog Destructor called" << std::endl;
+  delete _brain;
 }
 
-Dog::Dog(const Dog& cpy) : Animal(cpy)
-{
-    *this = cpy;
+Dog::Dog(const Dog &cpy) : Animal(cpy) {
+  std::cout << "COPY" << std::endl;
+  this->type = cpy.type;
+  this->_brain = new Brain(*cpy._brain);
 }
 
-Dog& Dog::operator=(const Dog& src)
-{
-    if (this != &src)
-    {
-        this->type = src.getType();
-        this->_brain = src._brain;
-    }
-    return (*this);
+Dog Dog::operator=(const Dog &src) {
+  std::cout << "OPERATOR" << std::endl;
+
+  if (this != &src) {
+    this->type = src.getType();
+    *this->_brain = *src._brain;
+  }
+  return (*this);
 }
 
-void Dog::makeSound() const
-{
-    std::cout << "* Waf Waf *" << std::endl;
-}
+void Dog::makeSound() const { std::cout << "* Waf Waf *" << std::endl; }

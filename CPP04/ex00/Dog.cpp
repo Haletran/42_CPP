@@ -12,9 +12,14 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog") {}
+Dog::Dog() : Animal("Dog") {
+    std::cout << "Dog Constructor called" << std::endl;
+}
 
-Dog::~Dog(){}
+Dog::~Dog(){
+    std::cout << "Dog Destructor called" << std::endl;
+
+}
 
 Dog::Dog(const Dog& cpy)
 {

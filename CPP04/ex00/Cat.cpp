@@ -12,9 +12,13 @@
 
 #include "Cat.hpp"
 
-Cat::Cat()  : Animal("Cat") {}
+Cat::Cat()  : Animal("Cat") {
+    std::cout << "Cat Constructor called" << std::endl;
+}
 
-Cat::~Cat() {}
+Cat::~Cat() {
+    std::cout << "Cat Destructor called" << std::endl;
+}
 
 Cat::Cat(const Cat& cpy)
 {

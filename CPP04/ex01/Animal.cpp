@@ -12,35 +12,28 @@
 
 #include "Animal.hpp"
 
-Animal::Animal() {}
-
-Animal::~Animal() {}
-
-Animal::Animal(std::string type)
-{
-    this->type = type;
+Animal::Animal() {
+  std::cout << "Animal Default Constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal& cpy)
-{
-    *this = cpy;
+Animal::~Animal() { std::cout << "Animal Destructor called" << std::endl; }
+
+Animal::Animal(std::string type) { this->type = type; }
+
+Animal::Animal(const Animal &cpy) { this->type = cpy.type; }
+
+Animal &Animal::operator=(const Animal &src) {
+  if (this != &src)
+    this->type = src.getType();
+  return (*this);
 }
 
-Animal &Animal::operator=(const Animal& src)
-{
-    if (this != &src)
-        this->type = src.getType();
-    return (*this);
+std::string Animal::getType() const {
+  if (type.empty())
+    return ("Random Animal");
+  return (this->type);
 }
 
-std::string Animal::getType() const
-{
-    if (type.empty())
-        return ("Random Animal");
-    return (this->type);
-}
-
-void Animal::makeSound() const
-{
-    std::cout << "* Random Animal noise *" << std::endl;
+void Animal::makeSound() const {
+  std::cout << "* Random Animal noise *" << std::endl;
 }

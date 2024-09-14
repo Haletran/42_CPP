@@ -11,33 +11,32 @@
 /* ************************************************************************** */
 
 #include "Cat.hpp"
+#include "Animal.hpp"
 
-Cat::Cat()  : Animal("Cat")
-{
-    this->_brain = new Brain();
+Cat::Cat() : Animal("Cat") {
+  std::cout << "Cat Constructor called" << std::endl;
+  this->_brain = new Brain();
 }
 
 Cat::~Cat() {
-    delete _brain;
+  std::cout << "Cat Destructor called" << std::endl;
+  delete _brain;
 }
 
-Cat::Cat(const Cat& cpy) : Animal(cpy)
-{
-    *this = cpy;
+Cat::Cat(const Cat &cpy) : Animal(cpy) {
+  std::cout << "COPY" << std::endl;
+
+  this->type = cpy.type;
+  this->_brain = new Brain(*cpy._brain);
 }
 
-Cat& Cat::operator=(const Cat& src)
-{
-    if (this != &src)
-    {
-        this->type = src.getType();
-        this->_brain = src._brain;
-    }
-    return (*this);
+Cat Cat::operator=(const Cat &src) {
+  std::cout << "OPERATOR" << std::endl;
+  if (this != &src) {
+    this->type = src.type;
+    *this->_brain = *src._brain;
+  }
+  return (*this);
 }
 
-
-void Cat::makeSound() const
-{
-    std::cout << "* Miaou Miaou *" << std::endl;
-}
+void Cat::makeSound() const { std::cout << "* Miaou Miaou *" << std::endl; }
