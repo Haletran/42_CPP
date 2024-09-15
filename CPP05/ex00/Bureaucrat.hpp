@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include <exception>
 #include <iostream>
 
 class Bureaucrat {
@@ -21,6 +22,14 @@ public:
   Bureaucrat(const Bureaucrat &cpy);
   Bureaucrat &operator=(const Bureaucrat &src);
   ~Bureaucrat();
+
+  // CUSTOM EXCEPTIONS
+  class GradeTooHighException : public std::exception {
+    const char *what() const throw();
+  };
+  class GradeTooLowException : public std::exception {
+    const char *what() const throw();
+  };
 };
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &bur);
