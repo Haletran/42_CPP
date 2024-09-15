@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name) {
-  std::cout << "Bureaucrat constructor called" << std::endl;
+  std::cerr << "Bureaucrat constructor called" << std::endl;
   if (grade > 150)
     throw(GradeTooLowException());
   else if (grade < 1)
@@ -10,7 +10,7 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name) {
 }
 
 Bureaucrat::~Bureaucrat() {
-  std::cout << "Bureaucrat destructor called" << std::endl;
+  std::cerr << "Bureaucrat destructor called" << std::endl;
 }
 
 std::string const Bureaucrat::getName() { return (this->_name); }
@@ -18,7 +18,7 @@ int Bureaucrat::getGrade() { return (this->_grade); }
 
 void Bureaucrat::increment_grade(int value) {
   if (this->_grade - value < 0)
-    throw(value);
+    throw(GradeTooHighException());
   this->_grade -= value;
 }
 
@@ -32,7 +32,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
 
 void Bureaucrat::decrement_grade(int value) {
   if (this->_grade + value > 150)
-    throw(value);
+    throw(GradeTooLowException());
   this->_grade += value;
 }
 
