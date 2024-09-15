@@ -35,9 +35,9 @@ int main() {
   tmp = src->createMateria("ice");
   asd = src->createMateria("cure");
   me->equip(tmp);
-
   tmp = src->createMateria("cure");
   me->equip(tmp);
+  tmp = src->createMateria("ice");
   me->equip(tmp);
   you->equip(tmp); // SIGSEV HERE
   cpy->equip(asd);
