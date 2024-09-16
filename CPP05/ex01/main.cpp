@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <exception>
 
 int main() {
@@ -17,6 +18,19 @@ int main() {
     Bureaucrat michel("michel", 60);
     std::cout << michel << std::endl;
     michel.decrement_grade(100);
+  } catch (std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
+  // FORM CHECK
+  try {
+    Form test("test");
+    Bureaucrat asd("test", 30);
+    std::cout << test << std::endl;
+    asd.SignedForm(test);
+    asd.increment_grade(29);
+    asd.SignedForm(test);
+    asd.SignedForm(test);
+    std::cout << test << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }

@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+class Form;
 #include <exception>
 #include <iostream>
 
@@ -16,7 +17,7 @@ public:
   int getGrade();
   void decrement_grade(int value);
   void increment_grade(int value);
-  void SignedForm();
+  void SignedForm(Form &check);
 
   // COPLIAN
   Bureaucrat(const std::string _name, int grade);
