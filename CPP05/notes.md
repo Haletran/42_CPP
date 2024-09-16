@@ -27,3 +27,16 @@ crat. It must attempt to execute the form. If it’s successful, print something
 `<bureaucrat> executed <form>`
 If not, print an explicit error message.
 Implement and turn in some tests to ensure everything works as expected
+
+## EX03
+
+- create an intern class that create Forms
+- no name, no grade, no unique characteristics
+- makeForm() function. It takes
+  two strings. The first one is the name of a form and the second one is the target of the
+  form. It return a pointer to a Form object (whose name is the one passed as parameter)
+  whose target will be initialized to the second parameter.
+  It will print something like:
+  `Intern creates <form>`
+  If the form name passed as parameter doesn’t exist, print an explicit error message
+- no if/else forest for creating (switch - case obligatory (with pointer on function))
