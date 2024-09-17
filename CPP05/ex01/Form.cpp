@@ -1,14 +1,14 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(std::string const &name) : _name(name) {
+Form::Form(std::string const &name, int grade_s, int grade_e) : _name(name),  _grade_s(grade_s), _grade_e(grade_e) {
   this->_is_signed = false;
   std::cout << "Creating a form" << this->_name << std::endl;
 }
 
 Form::~Form() { std::cout << "Deleting the form" << std::endl; }
 
-Form::Form(const Form &cpy) { *this = cpy; }
+Form::Form(const Form &cpy) : _grade_s(cpy._grade_s),_grade_e(cpy._grade_e){ *this = cpy; }
 
 Form Form::operator=(const Form &src) {
   if (this != &src)

@@ -10,13 +10,13 @@ class Form {
 private:
   std::string const _name;
   bool _is_signed;
-  static const int _grade_s = 15;
-  static const int _grade_e = 5;
+  const int _grade_s;
+  const int _grade_e;
   Form();
 
 public:
   // COPLIAN
-  Form(std::string const &name);
+  Form(std::string const &name, int grade_s, int grade_e);
   Form(const Form &cpy);
   Form operator=(const Form &src);
   virtual ~Form();

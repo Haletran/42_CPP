@@ -23,7 +23,7 @@ int main() {
   }
   // FORM CHECK
   try {
-    Form test("test");
+    Form test("test", 15, 5);
     Bureaucrat asd("test", 30);
     std::cout << test << std::endl;
     asd.SignedForm(test);
