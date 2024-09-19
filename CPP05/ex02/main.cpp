@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <exception>
 
 int main() {
@@ -23,7 +23,7 @@ int main() {
   }
   // FORM CHECK
   try {
-    Form test("test");
+    AForm test("test");
     Bureaucrat asd("test", 30);
     std::cout << test << std::endl;
     asd.SignedForm(test);

@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <exception>
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name) {
