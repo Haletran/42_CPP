@@ -3,6 +3,8 @@
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 // RobotomyRequestForm: Required grades: sign 72, exec 45
 // Makes some drilling noises. Then, informs that <target> has been robotomized
@@ -14,6 +16,10 @@ class RobotomyRequestForm : public AForm {
         RobotomyRequestForm(const RobotomyRequestForm& cpy);
         RobotomyRequestForm operator=(const RobotomyRequestForm& src);
         ~RobotomyRequestForm();
+
+        void execute(Bureaucrat const &executor) const;
+    protected:
+        std::string target;
 };
 
 #endif

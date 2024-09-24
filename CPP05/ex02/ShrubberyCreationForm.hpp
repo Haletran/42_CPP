@@ -10,10 +10,14 @@
 class ShrubberyCreationForm : public AForm {
     // COPLIAN
     public:
-        ShrubberyCreationForm(const Bureaucrat cpy);
+        ShrubberyCreationForm(const Bureaucrat& cpy);
         ShrubberyCreationForm(const ShrubberyCreationForm& cpy);
         ShrubberyCreationForm operator=(const  ShrubberyCreationForm& src);
         ~ShrubberyCreationForm();
+
+        void execute(Bureaucrat const &executor) const;
+    protected:
+        std::string target;
 };
 
 

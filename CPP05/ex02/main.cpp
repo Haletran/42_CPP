@@ -1,5 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <exception>
 
 int main() {
@@ -21,17 +24,41 @@ int main() {
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
-  // FORM CHECK
+  // PRESIDENTIAL FORM
   try {
-    AForm test("test");
-    Bureaucrat asd("test", 30);
+    Bureaucrat asd("test", 10);
+    PresidentialPardonForm test(asd);
     std::cout << test << std::endl;
     asd.SignedForm(test);
-    asd.increment_grade(29);
-    asd.SignedForm(test);
-    asd.SignedForm(test);
+    std::cout << "GRADE : " << asd.getGrade() << std::endl;
+    asd.executeForm(test);
+    asd.increment_grade(8);
+    std::cout << "GRADE : " << asd.getGrade() << std::endl;
+    asd.executeForm(test);
     std::cout << test << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
+  }
+
+  // SHRUBBERY FORM
+  try{
+      Bureaucrat michel("michel", 40);
+      ShrubberyCreationForm tree(michel);
+      std::cout << tree << std::endl;
+      michel.SignedForm(tree);
+      michel.executeForm(tree);
+  } catch (std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
+
+  // ROBOTOMY FORM
+  try {
+      Bureaucrat bender("bender", 10);
+      RobotomyRequestForm rob(bender);
+      std::cout << rob << std::endl;
+      bender.SignedForm(rob);
+      bender.executeForm(rob);
+  } catch (std::exception & e) {
+      std::cout << e.what() << std::endl;
   }
 }

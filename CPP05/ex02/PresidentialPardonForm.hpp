@@ -11,13 +11,15 @@ class PresidentialPardonForm : public AForm  {
         // COPLIAN
         PresidentialPardonForm(const Bureaucrat& target);
         PresidentialPardonForm(const PresidentialPardonForm& cpy);
-        PresidentialPardonForm operator=(const PresidentialPardonForm& src);
+        PresidentialPardonForm &operator=(const PresidentialPardonForm& src);
         ~PresidentialPardonForm();
 
-        void execute(Bureaucrat const &executor);
+        void execute(Bureaucrat const &executor) const;
 
-
-
+    protected:
+        std::string target;
+    private:
+        PresidentialPardonForm();
 };
 
 

@@ -15,8 +15,8 @@ Bureaucrat::~Bureaucrat() {
   std::cerr << "Bureaucrat destructor called" << std::endl;
 }
 
-std::string const Bureaucrat::getName() { return (this->_name); }
-int Bureaucrat::getGrade() { return (this->_grade); }
+std::string Bureaucrat::getName() const{ return (this->_name); }
+int Bureaucrat::getGrade() const { return (this->_grade); }
 
 void Bureaucrat::increment_grade(int value) {
   if (this->_grade - value < 0)
@@ -50,7 +50,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
   return ("Grade too high");
 }
 
-void Bureaucrat::SignedForm(Form &t) {
+void Bureaucrat::SignedForm(AForm &t) {
 
   try {
     t.beSigned(this);
@@ -59,4 +59,17 @@ void Bureaucrat::SignedForm(Form &t) {
     std::cout << this->_name << " couldn’t sign " << t.getName() << " because "
               << e.what() << std::endl;
   }
+}
+
+
+Bureaucrat Bureaucrat::executeForm(AForm const & form)
+{
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    } catch (std::exception & e)
+    {
+        std::cout << this->getName() << " failed to execute " << form.getName() << std::endl;
+    }
+    return (*this);
 }

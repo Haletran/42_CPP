@@ -11,11 +11,11 @@ AForm::~AForm() { std::cout << "Deleting the form" << std::endl; }
 
 AForm::AForm(const AForm &cpy) : _grade_s(cpy._grade_s),_grade_e(cpy._grade_e){ *this = cpy; }
 
-// AForm AForm::operator=(const AForm &src) {
-//   if (this != &src)
-//     this->_is_signed = src._is_signed;
-//   return (*this);
-// }
+AForm &AForm::operator=(const AForm &src) {
+  if (this != &src)
+    this->_is_signed = src._is_signed;
+  return (*this);
+}
 
 const char *AForm::GradeTooLowException::what() const throw() {
   return ("Grade is too low");
@@ -24,6 +24,10 @@ const char *AForm::GradeTooHighException::what() const throw() {
   return ("Grade is too high");
 }
 const char *AForm::AlreadySigned::what() const throw() {
+  return ("Form is already signed");
+}
+
+const char *AForm::NotSigned::what() const throw() {
   return ("Form is already signed");
 }
 

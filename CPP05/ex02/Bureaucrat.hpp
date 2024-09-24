@@ -13,8 +13,8 @@ private:
 
 public:
   // FUNCTIONS
-  std::string const getName();
-  int getGrade();
+  std::string getName() const;
+  int getGrade() const;
   void decrement_grade(int value);
   void increment_grade(int value);
   void SignedForm(AForm &check);

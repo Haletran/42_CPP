@@ -16,7 +16,7 @@ public:
   // COPLIAN
   AForm(std::string const &name, int grade_s, int grade_e);
   AForm(const AForm &cpy);
-  // AForm operator=(const AForm &src);
+  AForm &operator=(const AForm &src);
   virtual ~AForm();
 
   // FUNCTIONS
@@ -27,6 +27,9 @@ public:
     const char *what() const throw();
   };
   class AlreadySigned : public std::exception {
+    const char *what() const throw();
+  };
+  class NotSigned : public std::exception {
     const char *what() const throw();
   };
   void beSigned(Bureaucrat *bur);
