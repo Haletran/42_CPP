@@ -72,6 +72,7 @@ int main() {
       rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
       //bender.SignedForm(*rrf);
       bender.executeForm(*rrf);
+      delete rrf;
   } catch(std::exception &e)
   {
       std::cout << e.what() << std::endl;
