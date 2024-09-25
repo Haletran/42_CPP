@@ -26,7 +26,7 @@ int main() {
   }
   // PRESIDENTIAL FORM
   try {
-    Bureaucrat asd("test", 10);
+    Bureaucrat asd("test", 150);
     PresidentialPardonForm test(asd.getName());
     std::cout << test << std::endl;
     asd.SignedForm(test);

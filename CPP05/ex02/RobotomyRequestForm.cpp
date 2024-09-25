@@ -17,7 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& cpy) : AForm
 
 RobotomyRequestForm RobotomyRequestForm::operator=(const RobotomyRequestForm& src){
     if (this != &src)
-        *this = src;
+        this->target = src.target;
     return (*this);
 }
 
@@ -28,9 +28,9 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     {
         srand(time(0));
         if (rand() % 2 == 0)
-            std::cout << executor.getName() << " has been robotomized" << std::endl;
+            std::cout << target << " has been robotomized" << std::endl;
         else
-            std::cout << "Fail to robotomize " << executor.getName() << std::endl;
+            std::cout << "Fail to robotomize " << target << std::endl;
     } else
         throw GradeTooLowException();
 }

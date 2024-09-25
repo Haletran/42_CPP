@@ -2,14 +2,22 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm(std::string const &name, int grade_s, int grade_e) : _name(name),  _grade_s(grade_s), _grade_e(grade_e) {
+AForm::AForm(std::string const &name, int grade_s, int grade_e)
+    : _name(name), _grade_s(grade_s), _grade_e(grade_e) {
+  if (grade_s < 1 || grade_e < 1)
+    throw AForm::GradeTooHighException();
+  if (grade_s > 150 || grade_e > 150)
+    throw AForm::GradeTooLowException();
   this->_is_signed = false;
   std::cout << "Creating a form" << this->_name << std::endl;
 }
 
 AForm::~AForm() { std::cout << "Deleting the form" << std::endl; }
 
-AForm::AForm(const AForm &cpy) : _grade_s(cpy._grade_s),_grade_e(cpy._grade_e){ *this = cpy; }
+AForm::AForm(const AForm &cpy)
+    : _grade_s(cpy._grade_s), _grade_e(cpy._grade_e) {
+  *this = cpy;
+}
 
 AForm &AForm::operator=(const AForm &src) {
   if (this != &src)

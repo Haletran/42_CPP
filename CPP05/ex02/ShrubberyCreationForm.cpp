@@ -20,7 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& cpy) :
 ShrubberyCreationForm ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src)
 {
     if (this != &src)
-        *this = src;
+        this->target = src.target;
     return (*this);
 }
 
@@ -30,7 +30,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         throw AForm::NotSigned();
     if (executor.getGrade() <= this->getGradeE())
     {
-        std::string filename = executor.getName() + "_shrubbery";
+        std::string filename = target + "_shrubbery";
         std::ofstream out(filename.c_str());
         out << "             # #### ####\n";
         out << "           ### \\/#|### |/####\n";

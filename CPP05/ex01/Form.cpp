@@ -2,6 +2,10 @@
 #include "Bureaucrat.hpp"
 
 Form::Form(std::string const &name, int grade_s, int grade_e) : _name(name),  _grade_s(grade_s), _grade_e(grade_e) {
+    if (grade_s < 1 || grade_e < 1)
+        throw Form::GradeTooHighException();
+    if (grade_s > 150 || grade_e > 150)
+        throw Form::GradeTooLowException();
   this->_is_signed = false;
   std::cout << "Creating a form" << this->_name << std::endl;
 }
