@@ -5,6 +5,7 @@
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Form", 72, 45)
 {
     std::cout << "RobotomyRequestForm constructor called" << std::endl;
+    srand(time(0));
     this->target = target;
 }
 
@@ -26,7 +27,6 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
         throw AForm::NotSigned();
     if (executor.getGrade() <= this->getGradeE())
     {
-        srand(time(0));
         if (rand() % 2 == 0)
             std::cout << target << " has been robotomized" << std::endl;
         else

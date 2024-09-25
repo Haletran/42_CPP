@@ -57,7 +57,8 @@ int main() {
       RobotomyRequestForm rob(bender.getName());
       std::cout << rob << std::endl;
       bender.SignedForm(rob);
-      bender.executeForm(rob);
+      for (int i = 0; i < 10; i++)
+        bender.executeForm(rob);
   } catch (std::exception & e) {
       std::cout << e.what() << std::endl;
   }
