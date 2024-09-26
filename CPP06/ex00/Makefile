@@ -13,7 +13,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = office
+NAME = Converter
 SRC = main.cpp ScalarConverter.cpp
 
 OBJ = $(SRC:.cpp=.o)
