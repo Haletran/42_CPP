@@ -4,8 +4,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-//sign 25, exec 5
-// Informs that <target> has been pardoned by Zaphod Beeblebrox.
 class PresidentialPardonForm : public AForm  {
     public:
         // COPLIAN

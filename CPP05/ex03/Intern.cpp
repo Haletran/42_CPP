@@ -16,7 +16,7 @@ Intern::~Intern()
 
 Intern::Intern(const Intern& cpy) {*this = cpy; }
 
-Intern Intern::operator=(const Intern& src)
+Intern &Intern::operator=(const Intern& src)
 {
     if (this != &src)
         *this = src;

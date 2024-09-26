@@ -19,7 +19,7 @@ std::string const Bureaucrat::getName() { return (this->_name); }
 int Bureaucrat::getGrade() { return (this->_grade); }
 
 void Bureaucrat::increment_grade(int value) {
-  if (this->_grade - value < 0)
+  if (this->_grade - value <= 0)
     throw(GradeTooHighException());
   this->_grade -= value;
 }

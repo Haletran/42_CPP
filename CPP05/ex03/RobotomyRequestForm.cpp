@@ -16,7 +16,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& cpy) : AForm(cpy) {}
 
-RobotomyRequestForm RobotomyRequestForm::operator=(const RobotomyRequestForm& src){
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& src){
     if (this != &src)
         this->target = src.target;
     return (*this);
@@ -27,6 +27,7 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
         throw AForm::NotSigned();
     if (executor.getGrade() <= this->getGradeE())
     {
+        std::cout << "* drilling noises *" << std::endl;
         if (rand() % 2 == 0)
             std::cout << target << " has been robotomized" << std::endl;
         else

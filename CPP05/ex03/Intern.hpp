@@ -9,7 +9,7 @@ class Intern {
     // COPLIAN
     Intern();
     Intern(const Intern& cpy);
-    Intern operator=(const Intern &src);
+    Intern &operator=(const Intern &src);
     ~Intern();
 
     AForm *makeForm(std::string const &form, std::string const &target);

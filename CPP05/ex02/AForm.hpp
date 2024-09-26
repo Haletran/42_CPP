@@ -9,7 +9,7 @@ class Bureaucrat;
 class AForm {
 private:
   std::string const _name;
-  bool _is_signed;
+  bool _isSigned;
   const int _grade_s;
   const int _grade_e;
 public:

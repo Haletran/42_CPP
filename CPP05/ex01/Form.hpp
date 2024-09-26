@@ -9,7 +9,7 @@ class Bureaucrat;
 class Form {
 private:
   std::string const _name;
-  bool _is_signed;
+  bool _isSigned;
   const int _grade_s;
   const int _grade_e;
   Form();
@@ -18,7 +18,7 @@ public:
   // COPLIAN
   Form(std::string const &name, int grade_s, int grade_e);
   Form(const Form &cpy);
-  Form operator=(const Form &src);
+  Form &operator=(const Form &src);
   virtual ~Form();
 
   // FUNCTIONS

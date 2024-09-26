@@ -6,7 +6,7 @@ Form::Form(std::string const &name, int grade_s, int grade_e) : _name(name),  _g
         throw Form::GradeTooHighException();
     if (grade_s > 150 || grade_e > 150)
         throw Form::GradeTooLowException();
-  this->_is_signed = false;
+  this->_isSigned = false;
   std::cout << "Creating a form" << this->_name << std::endl;
 }
 
@@ -14,9 +14,9 @@ Form::~Form() { std::cout << "Deleting the form" << std::endl; }
 
 Form::Form(const Form &cpy) : _grade_s(cpy._grade_s),_grade_e(cpy._grade_e){ *this = cpy; }
 
-Form Form::operator=(const Form &src) {
+Form &Form::operator=(const Form &src) {
   if (this != &src)
-    this->_is_signed = src._is_signed;
+    this->_isSigned = src._isSigned;
   return (*this);
 }
 
@@ -34,9 +34,9 @@ void Form::beSigned(Bureaucrat *bur) {
   if (bur->getGrade() > this->getGradeS()) {
     throw Form::GradeTooLowException();
   }
-  if (this->_is_signed)
+  if (this->_isSigned)
     throw Form::AlreadySigned();
-  this->_is_signed = true;
+  this->_isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &os, Form &bur) {
@@ -56,5 +56,5 @@ std::ostream &operator<<(std::ostream &os, Form &bur) {
 
 int Form::getGradeS() const { return (this->_grade_s); }
 int Form::getGradeE() const { return (this->_grade_e); }
-bool Form::getSigned() const { return (this->_is_signed); }
+bool Form::getSigned() const { return (this->_isSigned); }
 std::string Form::getName() const { return (this->_name); };

@@ -17,7 +17,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& cpy) : AForm(cpy) {}
 
-ShrubberyCreationForm ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src)
 {
     if (this != &src)
         this->target = src.target;

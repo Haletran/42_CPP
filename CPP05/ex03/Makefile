@@ -30,6 +30,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
+	rm -rf *_shrubbery
 	rm -f $(NAME)
 
 re: fclean all

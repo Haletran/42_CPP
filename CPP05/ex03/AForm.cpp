@@ -8,7 +8,7 @@ AForm::AForm(std::string const &name, int grade_s, int grade_e)
     throw AForm::GradeTooHighException();
   if (grade_s > 150 || grade_e > 150)
     throw AForm::GradeTooLowException();
-  this->_is_signed = false;
+  this->_isSigned = false;
   std::cout << "Creating a form" << this->_name << std::endl;
 }
 
@@ -21,7 +21,7 @@ AForm::AForm(const AForm &cpy)
 
 AForm &AForm::operator=(const AForm &src) {
   if (this != &src)
-    this->_is_signed = src._is_signed;
+    this->_isSigned = src._isSigned;
   return (*this);
 }
 
@@ -43,9 +43,9 @@ void AForm::beSigned(Bureaucrat *bur) {
   if (bur->getGrade() > this->getGradeS()) {
     throw AForm::GradeTooLowException();
   }
-  if (this->_is_signed)
+  if (this->_isSigned)
     throw AForm::AlreadySigned();
-  this->_is_signed = true;
+  this->_isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &os, AForm &bur) {
@@ -65,5 +65,5 @@ std::ostream &operator<<(std::ostream &os, AForm &bur) {
 
 int AForm::getGradeS() const { return (this->_grade_s); }
 int AForm::getGradeE() const { return (this->_grade_e); }
-bool AForm::getSigned() const { return (this->_is_signed); }
+bool AForm::getSigned() const { return (this->_isSigned); }
 std::string AForm::getName() const { return (this->_name); };
