@@ -1,7 +1,11 @@
 #include "ScalarConverter.hpp"
 #include <cctype>
+#include <cstdlib>
+#include <iomanip>
+#include <ios>
 #include <iostream>
 #include <climits>
+#include <ostream>
 
 bool CheckErrors(std::string value)
 {
@@ -12,58 +16,100 @@ bool CheckErrors(std::string value)
     return false;
 }
 
+bool check_string(std::string value)
+{
+    for (int i = 0; i < (int)value.length(); i++)
+    {
+        if (std::isalpha(value[i]))
+            if (std::isalpha(value[i + 1]))
+                return (true);
+    }
+    return false;
+}
+
+bool isDouble(std::string value) {
+    for (int i = 0; i < (int)value.length(); i++)
+    {
+        if (value[i] == '.')
+            if (std::isdigit(value[i + 1]) && value[i + 2] != 'f')
+                return true;
+    }
+    return false;
+}
+bool isFloat(std::string value) {
+    for (int i = 0; i < (int)value.length(); i++)
+    {
+        if (value[i] == '.')
+            if (std::isdigit(value[i + 1]) && value[i + 2] == 'f')
+                return true;
+    }
+    return false;
+
+}
+
 void ScalarConverter::convert(std::string value)
 {
-    // SET VARIABLES
-    bool error = CheckErrors(value);
+    bool case_error = CheckErrors(value);
+    bool alpha_error = check_string(value);
     std::cout << std::fixed << std::setprecision(1);
-    double origin = std::strtod(value.c_str(), NULL);
-    char c_cast = static_cast<char>(origin);
-    float f_cast = static_cast<float>(origin);
-    double d_cast = static_cast<double>(origin);
-    int i_cast = static_cast<int>(origin);
-    bool digitCheck = std::isdigit(value[0]);
-    bool alphaCheck = std::isalpha(value[0]);
 
-    if (value.length() > 1 && !digitCheck && !std::isdigit(value[1]))
+    if (!case_error && alpha_error)
     {
-        std::cout << "Only one character, not a string..." << std::endl;
+        std::cerr << "Too much character in user input..." << std::endl;
         return ;
     }
 
-    if (alphaCheck && !error)
+    if (isDouble(value))
     {
-        i_cast = static_cast<int>(value[0]);
-        d_cast = static_cast<double>(value[0]);
-        f_cast = static_cast<float>(value[0]);
+        double num_d = std::strtod(value.c_str(), NULL);
+        std::cout << "char : ";
+        if (case_error)
+            std::cout << "impossible" << std::endl;
+        else
+            std::cout << "Not Displayable" << std::endl;
+        std::cout << "int : " << static_cast<int>(num_d) << std::endl;
+        std::cout << "float : " << static_cast<float>(num_d) << "f" << std::endl;
+        std::cout << "double : " << num_d << std::endl;
+        return ;
     }
-    // CHECK ERRORS
-    switch (static_cast<int>(error)) {
-        case 1:
-        {
-            std::cout << "char: impossible" << std::endl;
-            std::cout << "int: impossible" << std::endl;
-            break;
-        }
-        case 0:
-        {
-            if (!digitCheck && value.length() == 1)
-                std::cout << "char : " << value << std::endl;
-            else if (!alphaCheck && !(value.length() > 4))
-                std::cout << "char : " << c_cast << std::endl;
-            else
-                std::cout << "char: Non displayable" << std::endl;
-            std::cout << "int: " << i_cast << std::endl;
-            break;
-        }
-    }
-    // FLOAT AND DOUBLE PART
-    std::cout << "float: ";
-    if (value[value.length() - 1] == 'f' && error)
-        std::cout << f_cast << std::endl;
-    else
-        std::cout << f_cast << "f" << std::endl;
 
-    std::cout << "double: ";
-    std::cout << d_cast << std::endl;
+    if (isFloat(value))
+    {
+        float num_f = std::strtof(value.c_str(), NULL);
+        std::cout << "char : ";
+        if (case_error)
+            std::cout << "impossible" << std::endl;
+        else
+            std::cout << "Not Displayable" << std::endl;
+        std::cout << "int : " << static_cast<int>(num_f) << std::endl;
+        std::cout << "float : " << num_f << "f" << std::endl;
+        std::cout << "double : " << static_cast<double>(num_f) << std::endl;
+        return ;
+    }
+
+    if (std::isalpha(value[0]))
+    {
+        char num_c = static_cast<char>(value[0]);
+        std::cout << "char : ";
+        if (case_error)
+            std::cout << "impossible" << std::endl;
+        else
+            std::cout << num_c << std::endl;
+        std::cout << "int : " << static_cast<int>(value[0]) << std::endl;
+        std::cout << "float : " << static_cast<float>(value[0]) << std::endl;
+        std::cout << "double : " << static_cast<double>(value[0]) << std::endl;
+        return ;
+    }
+
+    double origin = std::strtod(value.c_str(), NULL);
+    int num = static_cast<int>(origin);
+    std::cout << "char : ";
+    if (case_error || value[0] == '-' || !std::isprint(num))
+        std::cout << "Not Displayable" << std::endl;
+    else
+        std::cout << static_cast<char>(num) << std::endl;
+    std::cout << "int : " << num << std::endl;
+    std::cout << "float : " << static_cast<float>(num) << std::endl;
+    std::cout << "double : " << static_cast<double>(num) << std::endl;
+    return ;
 }
