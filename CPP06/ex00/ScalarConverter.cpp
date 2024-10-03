@@ -1,6 +1,7 @@
 #include "ScalarConverter.hpp"
 #include <cctype>
 #include <iostream>
+#include <climits>
 
 bool CheckErrors(std::string value)
 {
@@ -24,7 +25,7 @@ void ScalarConverter::convert(std::string value)
     bool digitCheck = std::isdigit(value[0]);
     bool alphaCheck = std::isalpha(value[0]);
 
-    if (value.length() > 1 && !digitCheck)
+    if (value.length() > 1 && !digitCheck && !std::isdigit(value[1]))
     {
         std::cout << "Only one character, not a string..." << std::endl;
         return ;
