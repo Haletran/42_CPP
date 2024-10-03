@@ -14,7 +14,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = Converter
-SRC = main.cpp  Base.cpp
+SRC = main.cpp  Base.cpp A.cpp C.cpp B.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
