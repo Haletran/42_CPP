@@ -1,11 +1,6 @@
 #include "ScalarConverter.hpp"
-#include <cctype>
 #include <cstdlib>
-#include <iomanip>
-#include <ios>
 #include <iostream>
-#include <climits>
-#include <ostream>
 
 bool CheckErrors(std::string value)
 {
