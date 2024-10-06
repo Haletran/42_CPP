@@ -3,7 +3,10 @@
 #include "ICharacter.hpp"
 
 Character::Character(std::string const &name) {
-  this->_name = name;
+  if (name.empty())
+    this->_name = "empty";
+  else
+    this->_name = name;
   std::cout << this->_name << " has appeared" << std::endl;
   for (int i = 0; i < 3; i++)
     this->_inventory[i] = NULL;

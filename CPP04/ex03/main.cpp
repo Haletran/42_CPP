@@ -27,11 +27,13 @@ int main() {
 
   std::cout << BG_CYAN500 "CHARACTER MATERIA" RESET << std::endl;
   Character *me = new Character("me");
+  Character *qwe = new Character(NULL);
   Character *you = new Character("you");
   Character *cpy = new Character(*you);
 
   AMateria *tmp;
   AMateria *asd;
+  qwe->use(0, *me);
   tmp = src->createMateria("ice");
   asd = src->createMateria("cure");
   me->equip(tmp);

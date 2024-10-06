@@ -32,6 +32,7 @@ int main(void)
     michel.attack("enemi");
     michel.guardGate();
     michel.beRepaired(2);
+    michel.takeDamage(19);
 
     return (0);
 }
