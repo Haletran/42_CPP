@@ -7,6 +7,7 @@
 #include <vector>
 #include <stdexcept>
 #include <iostream>
+#include <algorithm>
 
 class  Span{
     public:
@@ -17,9 +18,12 @@ class  Span{
         Span operator=(const Span &src);
 
         void addNumber(const unsigned int &to_add);
+        void generateStock(std::vector<int> test);
         int shortestSpan();
         int longestSpan();
+
         void getStock();
+        unsigned int getN();
     private:
         unsigned int N;
         std::vector<unsigned int> _stock;
