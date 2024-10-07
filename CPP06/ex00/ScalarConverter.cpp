@@ -1,6 +1,7 @@
 #include "ScalarConverter.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <limits.h>
 
 bool CheckErrors(std::string value)
 {
@@ -54,6 +55,24 @@ void ScalarConverter::convert(std::string value)
         return ;
     }
 
+    if (case_error)
+    {
+        std::cout << "char : impossible" << std::endl;
+        std::cout << "int : impossible" << std::endl;
+        if (value[value.length() - 1] == 'f')
+            std::cout << "float : " << value << std::endl;
+        else
+            std::cout << "float : " << value << "f" << std::endl;
+        std::cout << "double : " << value << std::endl;
+        return ;
+    }
+
+    if (std::strtod(value.c_str(), NULL) > static_cast<double>(INT_MAX) || std::strtod(value.c_str(), NULL) < static_cast<double>(INT_MIN))
+    {
+        std::cerr << "Error: Value exceeds maximum limit for int type." << std::endl;
+        return;
+    }
+
     if (isDouble(value))
     {
         double num_d = std::strtod(value.c_str(), NULL);
@@ -99,7 +118,7 @@ void ScalarConverter::convert(std::string value)
     double origin = std::strtod(value.c_str(), NULL);
     int num = static_cast<int>(origin);
     std::cout << "char : ";
-    if (case_error || value[0] == '-' || !std::isprint(num))
+    if (case_error || value[0] == '-' || value.length() > 3 || !std::isprint(num))
         std::cout << "Not Displayable" << std::endl;
     else
         std::cout << static_cast<char>(num) << std::endl;
