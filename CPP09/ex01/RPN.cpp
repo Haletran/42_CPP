@@ -5,12 +5,23 @@
 bool is_op(char op)
 {
     const char* array = "+-/*";
-    for (int i = 0; array[i] != '\0'; ++i)
+    for (int i = 0; array[i]; ++i)
     {
         if (array[i] == op)
             return (true);
     }
     return (false);
+}
+
+int which_op(char op)
+{
+    const char*array = "+-/*";
+    for (int i = 0; array[i]; i++)
+    {
+        if (array[i] == op)
+            return (i);
+    }
+    return (0);
 }
 
 bool isbigger(int value)
@@ -22,7 +33,6 @@ bool isbigger(int value)
 
 Calculator::Calculator(std::string value)
 {
-    // parsing before so that i can check if the string is valid for RPN
     std::istringstream iss(value);
     std::string token;
     while (iss >> token)
@@ -38,14 +48,23 @@ Calculator::Calculator(std::string value)
             _stock_nb.pop();
             double num3 = _stock_nb.top();
             _stock_nb.pop();
-            if (token[0] == '+')
-                _stock_nb.push(num2 + num3);
-            else if (token[0] == '*')
-                _stock_nb.push(num2 * num3);
-            else if (token[0] == '-')
-                _stock_nb.push(num3 - num2);
-            else if (token[0] == '/')
-                _stock_nb.push(num3 / num2);
+            switch(which_op(token[0]))
+            {
+                case 0:
+                    _stock_nb.push(num2 + num3);
+                    break;
+                case 1:
+                    _stock_nb.push(num2 - num3);
+                    break;
+                case 2:
+                    _stock_nb.push(num3 / num2);
+                    break;
+                case 3:
+                    _stock_nb.push(num2 * num3);
+                    break;
+                default:
+                    std::cerr << "Error : not a valid operator" << std::endl;
+            }
         }
         else
         {
