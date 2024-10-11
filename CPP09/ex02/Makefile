@@ -13,7 +13,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = RPN
+NAME = PmergeMe
 SRC = main.cpp PmergeMe.cpp
 
 OBJ = $(SRC:.cpp=.o)
