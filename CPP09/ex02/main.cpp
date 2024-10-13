@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-#include <stdexcept>
 
 // vector and deque
 int main(int argc, char **argv)
@@ -10,12 +9,10 @@ int main(int argc, char **argv)
         return (1);
     }
     try {
-        Sorting instance(argv, argc);
-
-        instance.get_dequeStack();
-        instance.get_vectorStack();
-    } catch (std::runtime_error &e)
-    {
+        Pmerge instance(argv, argc);
+        if (instance.isSorted() == false)
+            throw std::runtime_error("stack not sorted");
+    } catch (std::runtime_error &e) {
         std::cerr << "Error : " << e.what() << std::endl;
     }
     return (0);
