@@ -1,24 +1,22 @@
 #include "PmergeMe.hpp"
 #include <cctype>
 #include <stdexcept>
+#include <sstream>
 #include <cstdlib>
-
 
 Sorting::Sorting(char **argv, int size)
 {
+    //parsing to do
     for (int j = 1; j < size; j++)
     {
         std::string value = argv[j];
-        for (int i = 0; value[i]; i++)
+        std::stringstream ss(value);
+        double num;
+        while(ss >> num)
         {
-            if (value[i] != 32 && !std::isdigit(value[i]))
-                throw std::runtime_error("Not a valid input");
-            if (std::isdigit(value[i]))
-            {
-                int num = static_cast<int>(std::strtod(&value[i], NULL));
-                _vectorStack.push_back(num);
-                _dequeStack.push_back(num);
-            }
+            int num2 = static_cast<int>(num);
+            _vectorStack.push_back(num2);
+            _dequeStack.push_back(num2);
         }
     }
 }
@@ -31,10 +29,10 @@ void Sorting::get_vectorStack()
     if (_vectorStack.empty())
         throw std::runtime_error("Vector stack is empty");
     std::cout << "Before (vector) : ";
-    if (_vectorStack.size())
+    if (_vectorStack.size() > 5)
         iterator = 5;
     else
-        iterator = _vectorStack.size();
+        iterator = (int)_vectorStack.size();
     for (int i = 0; i < iterator; i++)
         std::cout << _vectorStack[i] << " ";
     if (iterator == 5)
@@ -51,7 +49,7 @@ void Sorting::get_dequeStack()
     if (_dequeStack.size() > 5)
         iterator = 5;
     else
-        iterator = _dequeStack.size();
+        iterator = (int)_dequeStack.size();
     for (int i = 0; i < iterator; i++)
         std::cout << _dequeStack[i] << " ";
     if (iterator == 5)
