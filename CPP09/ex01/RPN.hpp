@@ -6,15 +6,17 @@
 #include <cctype>
 #include <cstdlib>
 #include <exception>
+#include <stdexcept>
+#include <sstream>
 
 class Calculator {
     private:
         std::stack<double> _stock_nb;
+        Calculator (const Calculator& cpy);
+        Calculator operator=(const Calculator& src);
     public:
         // Coplian
         Calculator(std::string value);
         ~Calculator();
-        // Calculator (const Calculator& cpy);
-        // Calculator operator=(const Calculator& src);
         void getStock_nb();
 };

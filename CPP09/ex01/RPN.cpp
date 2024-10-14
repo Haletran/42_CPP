@@ -1,7 +1,4 @@
 #include "RPN.hpp"
-#include <cctype>
-#include <stdexcept>
-#include <sstream>
 
 bool is_op(char op)
 {

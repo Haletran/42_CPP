@@ -12,8 +12,7 @@ int main(int argc, char **argv)
     try {
         Calculator instance(input);
         instance.getStock_nb();
-    } catch (std::runtime_error &e)
-    {
+    } catch (std::runtime_error &e) {
         std::cerr << "Error : " << e.what() << std::endl;
     }
     return (0);
