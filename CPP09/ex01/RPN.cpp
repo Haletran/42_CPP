@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <cctype>
 #include <stdexcept>
 #include <sstream>
 
@@ -33,6 +34,17 @@ bool isbigger(int value)
 
 Calculator::Calculator(std::string value)
 {
+    int count_op = 0;
+    int count_nb = 0;
+    for (int i = 0; i < value[i]; i++)
+    {
+        if (is_op(value[i]))
+            count_op++;
+        if (std::isdigit(value[i]))
+            count_nb++;
+    }
+    if (count_op >= count_nb)
+        throw std::runtime_error("operation impossible, too many operators");
     std::istringstream iss(value);
     std::string token;
     while (iss >> token)
