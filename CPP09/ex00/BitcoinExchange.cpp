@@ -47,16 +47,21 @@ void BitcoinExchange::convert()
     {
         if (check_input_file_error(line) == false)
         {
-            if (_stock.count(line.substr(0, 10)))
+            float line_value = std::strtof(line.substr(12).c_str(), NULL);
+            std::string date_key = line.substr(0, 10);
+            std::map<std::string, float>::iterator it = _stock.find(date_key);
+            if (it != _stock.end())
+                std::cout << date_key << " => " << line_value << " = " << line_value * it->second << std::endl;
+            else
             {
-                float line_value = std::strtof(line.substr(12).c_str(), NULL);
-                std::string date_key = line.substr(0, 10);
-                float _stock_value = _stock[date_key];
-                std::cout << date_key << " => " << line_value << " = " << line_value * _stock_value << std::endl;
+                it = _stock.lower_bound(date_key);
+                --it;
+                std::string next_key = it->first;
+                float _stock_value = it->second;
+                std::cout << next_key << " => " << line_value << " = " << line_value * _stock_value << std::endl;
             }
         }
     }
-    input_file.close();
 }
 
 void BitcoinExchange::getStock()
