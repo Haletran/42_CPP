@@ -55,7 +55,20 @@ bool check_input_file_error(std::string line)
         std::cerr << BRED"Error :" RESET<< " too large a number" << std::endl;
         return (true);
     }
+    int year = atoi(line.substr(0, 4).c_str());
+    if (!(year % 4) && (year % 100 || !(year % 400)))
+    {
+        if (atoi(line.substr(5, 2).c_str()) == 2 && atoi(line.substr(8, 2).c_str()) > 29)
+        {
+            std::cerr << BRED"Error :" RESET<< " invalid date" << std::endl;
+            return (true);
+        }
+    }
+    else if (atoi(line.substr(5, 2).c_str()) == 2 && atoi(line.substr(8, 2).c_str()) > 28)
+    {
+        std::cerr << BRED"Error :" RESET<< " not a leap year" << std::endl;
+        return (true);
+    }
     regfree(&date);
     return (false);
 }
-

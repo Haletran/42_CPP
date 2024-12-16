@@ -1,6 +1,5 @@
 #include "PmergeMe.hpp"
 
-
 double get_time_in_microseconds() {
     struct timeval time;
     gettimeofday(&time, NULL);
@@ -100,18 +99,36 @@ std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
     std::vector<int> merged;
 
     // fusionne et tri les trucs restants
+    int jacobsthal_index = 0;
     while (!left_half.empty() && !right_half.empty())
     {
-        if (left_half.front() <= right_half.front())
+        if (jacobsthal_index % 2 == 0)
         {
-            merged.push_back(left_half.front());
-            left_half.erase(left_half.begin());
+            if (left_half.front() <= right_half.front())
+            {
+                merged.push_back(left_half.front());
+                left_half.erase(left_half.begin());
+            }
+            else
+            {
+                merged.push_back(right_half.front());
+                right_half.erase(right_half.begin());
+            }
         }
         else
         {
-            merged.push_back(right_half.front());
-            right_half.erase(right_half.begin());
+            if (right_half.front() <= left_half.front())
+            {
+                merged.push_back(right_half.front());
+                right_half.erase(right_half.begin());
+            }
+            else
+            {
+                merged.push_back(left_half.front());
+                left_half.erase(left_half.begin());
+            }
         }
+        jacobsthal_index++;
     }
 
     // si contient encore des elements
@@ -143,19 +160,36 @@ std::deque<int> Pmerge::recursion_sort_deque(std::deque<int> pair_list)
     right_half = recursion_sort_deque(right_half);
 
     std::deque<int> merged;
-
+    int jacobsthal_index = 0;
     while (!left_half.empty() && !right_half.empty())
     {
-        if (left_half.front() <= right_half.front())
+        if (jacobsthal_index % 2 == 0)
         {
-            merged.push_back(left_half.front());
-            left_half.erase(left_half.begin());
+            if (left_half.front() <= right_half.front())
+            {
+                merged.push_back(left_half.front());
+                left_half.erase(left_half.begin());
+            }
+            else
+            {
+                merged.push_back(right_half.front());
+                right_half.erase(right_half.begin());
+            }
         }
         else
         {
-            merged.push_back(right_half.front());
-            right_half.erase(right_half.begin());
+            if (right_half.front() <= left_half.front())
+            {
+                merged.push_back(right_half.front());
+                right_half.erase(right_half.begin());
+            }
+            else
+            {
+                merged.push_back(left_half.front());
+                left_half.erase(left_half.begin());
+            }
         }
+        jacobsthal_index++;
     }
 
     while (!left_half.empty())
