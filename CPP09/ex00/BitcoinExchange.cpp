@@ -3,7 +3,7 @@
 BitcoinExchange::BitcoinExchange(std::string filename) {
     std::string line;
     this->_filename = filename;
-    std::ifstream file("data.csv");
+    std::ifstream file(DB_NAME);
     if (!file.is_open())
     {
         std::cerr << BRED "Error: " RESET<< "could not open db."<< std::endl;
