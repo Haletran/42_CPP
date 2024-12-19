@@ -82,7 +82,7 @@ void Pmerge::get_dequeStack(int option)
 
 std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
 {
-    if (pair_list.size() <= 1 || recur == 1) {
+    if (pair_list.size() <= 1 || recur == 20) {
         return pair_list;
     }
 
@@ -126,12 +126,12 @@ std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
 
 std::deque<int> Pmerge::recursion_sort_deque(std::deque<int> pair_list)
 {
-    if (pair_list.size() <= 1 || recur == 10) {
+    if (pair_list.size() <= 1 || recur == 20) {
         return pair_list;
     }
 
     std::deque<int> new_list;
-    for (size_t i = 0; i < 2; i += 2) {
+    for (size_t i = 0; i < pair_list.size(); i += 2) {
         if (i + 1 < pair_list.size()) {
             new_list.push_back(pair_list[i]);
             new_list.push_back(pair_list[i + 1]);
