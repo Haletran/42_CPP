@@ -82,7 +82,7 @@ void Pmerge::get_dequeStack(int option)
 
 std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
 {
-    if (pair_list.size() <= 1 || recur == 20) {
+    if (pair_list.size() <= 1 || recur == 1) {
         return pair_list;
     }
 
@@ -103,17 +103,13 @@ std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
     }
     recur++;
     std::vector<int> output = recursion_sort_vector(new_list);
-
     std::vector<int> sorted_list;
-    if (!output.empty()) {
-        sorted_list.push_back(output[0]);
-        output.erase(output.begin());
-    }
 
     int jacob_idx = 2;
     while (!output.empty()) {
         int jacob = jacobsthal(jacob_idx) % output.size();
-        if (jacob == 0) jacob_idx++;
+        if (jacob == 0)
+            jacob_idx++;
 
         int element = output[jacob];
         output.erase(output.begin() + jacob);
@@ -130,7 +126,7 @@ std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
 
 std::deque<int> Pmerge::recursion_sort_deque(std::deque<int> pair_list)
 {
-    if (pair_list.size() <= 1 || recur == 20) {
+    if (pair_list.size() <= 1 || recur == 1) {
         return pair_list;
     }
 
@@ -151,17 +147,13 @@ std::deque<int> Pmerge::recursion_sort_deque(std::deque<int> pair_list)
     }
     recur++;
     std::deque<int> output = recursion_sort_deque(new_list);
-
     std::deque<int> sorted_list;
-    if (!output.empty()) {
-        sorted_list.push_back(output[0]);
-        output.erase(output.begin());
-    }
 
     int jacob_idx = 2;
     while (!output.empty()) {
         int jacob = jacobsthal(jacob_idx) % output.size();
-        if (jacob == 0) jacob_idx++;
+        if (jacob == 0)
+            jacob_idx++;
 
         int element = output[jacob];
         output.erase(output.begin() + jacob);
