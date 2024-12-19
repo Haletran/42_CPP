@@ -10,6 +10,8 @@
 #include <sys/time.h>
 #include <iomanip>
 
+static int recur = 0;
+
 class Pmerge{
     private:
         std::vector<int> _vectorStack;
@@ -35,3 +37,9 @@ class Pmerge{
         std::vector<int> merge(std::vector<int> left_half, std::vector<int> right_half);
         std::deque<int> recursion_sort_deque(std::deque<int> pair_list);
 };
+
+
+int jacobsthal(int n);
+double get_time_in_microseconds();
+size_t binary_search_position_vector(const std::vector<int>& sorted_list, int element);
+size_t binary_search_position_deque(const std::deque<int>& sorted_list, int element);

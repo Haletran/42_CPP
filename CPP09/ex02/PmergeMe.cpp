@@ -1,11 +1,8 @@
 #include "PmergeMe.hpp"
+#include <vector>
 
-double get_time_in_microseconds() {
-    struct timeval time;
-    gettimeofday(&time, NULL);
-    return time.tv_sec * 1000000 + time.tv_usec;
-}
 
+// PARSING and INIT list
 Pmerge::Pmerge(char **argv, int size) : _index(0)
 {
     if (parse_input(argv) == true)
@@ -41,6 +38,7 @@ void Pmerge::process()
     std::cout << "==================" << std::endl;
     get_dequeStack(0);
     before = get_time_in_microseconds();
+    recur = 0;
     _dequeStack = recursion_sort_deque(_dequeStack);
     after = get_time_in_microseconds();
     get_dequeStack(1);
@@ -82,131 +80,101 @@ void Pmerge::get_dequeStack(int option)
     std::cout << std::endl;
 }
 
-// erase pas trop opti, mieux vaut opter pour un index
 std::vector<int> Pmerge::recursion_sort_vector(std::vector<int> pair_list)
 {
-    if (pair_list.size() <= 1)
-        return (pair_list);
+    if (pair_list.size() <= 1 || recur == 20) {
+        return pair_list;
+    }
 
-    // divise la liste en deux parties de paires (sous-vecteur)
-    std::vector<int> left_half(pair_list.begin(), pair_list.begin() + pair_list.size() / 2);
-    std::vector<int> right_half(pair_list.begin() + pair_list.size() / 2, pair_list.end());
-
-    // puis divise encore en moitie jusqu'a atteindre la condition de base (1 donc plus de paire possible)
-    left_half = recursion_sort_vector(left_half);
-    right_half = recursion_sort_vector(right_half);
-
-    std::vector<int> merged;
-
-    // fusionne et tri les trucs restants
-    int jacobsthal_index = 0;
-    while (!left_half.empty() && !right_half.empty())
-    {
-        if (jacobsthal_index % 2 == 0)
-        {
-            if (left_half.front() <= right_half.front())
-            {
-                merged.push_back(left_half.front());
-                left_half.erase(left_half.begin());
-            }
-            else
-            {
-                merged.push_back(right_half.front());
-                right_half.erase(right_half.begin());
-            }
+    std::vector<int> new_list;
+    for (size_t i = 0; i < pair_list.size(); i += 2) {
+        if (i + 1 < pair_list.size()) {
+            new_list.push_back(pair_list[i]);
+            new_list.push_back(pair_list[i + 1]);
+        } else {
+            new_list.push_back(pair_list[i]);
         }
-        else
-        {
-            if (right_half.front() <= left_half.front())
-            {
-                merged.push_back(right_half.front());
-                right_half.erase(right_half.begin());
-            }
-            else
-            {
-                merged.push_back(left_half.front());
-                left_half.erase(left_half.begin());
-            }
+    }
+
+    for (size_t i = 0; i < new_list.size(); i += 2) {
+        if (i + 1 < new_list.size() && new_list[i] > new_list[i + 1]) {
+            std::swap(new_list[i], new_list[i + 1]);
         }
-        jacobsthal_index++;
+    }
+    recur++;
+    std::vector<int> output = recursion_sort_vector(new_list);
+
+    std::vector<int> sorted_list;
+    if (!output.empty()) {
+        sorted_list.push_back(output[0]);
+        output.erase(output.begin());
     }
 
-    // si contient encore des elements
-    while (!left_half.empty())
-    {
-        merged.push_back(left_half.front());
-        left_half.erase(left_half.begin());
-    }
+    int jacob_idx = 2;
+    while (!output.empty()) {
+        int jacob = jacobsthal(jacob_idx) % output.size();
+        if (jacob == 0) jacob_idx++;
 
-    while (!right_half.empty())
-    {
-        merged.push_back(right_half.front());
-        right_half.erase(right_half.begin());
-    }
+        int element = output[jacob];
+        output.erase(output.begin() + jacob);
 
-    return (merged);
+        size_t pos = binary_search_position_vector(sorted_list, element);
+        sorted_list.insert(sorted_list.begin() + pos, element);
+
+        if (jacob >= (int)output.size()) {
+            jacob_idx = 2;
+        }
+    }
+    return (sorted_list);
 }
-
 
 std::deque<int> Pmerge::recursion_sort_deque(std::deque<int> pair_list)
 {
-    if (pair_list.size() <= 1)
-        return (pair_list);
+    if (pair_list.size() <= 1 || recur == 20) {
+        return pair_list;
+    }
 
-    std::deque<int> left_half(pair_list.begin(), pair_list.begin() + pair_list.size() / 2);
-    std::deque<int> right_half(pair_list.begin() + pair_list.size() / 2, pair_list.end());
-
-    left_half = recursion_sort_deque(left_half);
-    right_half = recursion_sort_deque(right_half);
-
-    std::deque<int> merged;
-    int jacobsthal_index = 0;
-    while (!left_half.empty() && !right_half.empty())
-    {
-        if (jacobsthal_index % 2 == 0)
-        {
-            if (left_half.front() <= right_half.front())
-            {
-                merged.push_back(left_half.front());
-                left_half.erase(left_half.begin());
-            }
-            else
-            {
-                merged.push_back(right_half.front());
-                right_half.erase(right_half.begin());
-            }
+    std::deque<int> new_list;
+    for (size_t i = 0; i < pair_list.size(); i += 2) {
+        if (i + 1 < pair_list.size()) {
+            new_list.push_back(pair_list[i]);
+            new_list.push_back(pair_list[i + 1]);
+        } else {
+            new_list.push_back(pair_list[i]);
         }
-        else
-        {
-            if (right_half.front() <= left_half.front())
-            {
-                merged.push_back(right_half.front());
-                right_half.erase(right_half.begin());
-            }
-            else
-            {
-                merged.push_back(left_half.front());
-                left_half.erase(left_half.begin());
-            }
+    }
+
+    for (size_t i = 0; i < new_list.size(); i += 2) {
+        if (i + 1 < new_list.size() && new_list[i] > new_list[i + 1]) {
+            std::swap(new_list[i], new_list[i + 1]);
         }
-        jacobsthal_index++;
+    }
+    recur++;
+    std::deque<int> output = recursion_sort_deque(new_list);
+
+    std::deque<int> sorted_list;
+    if (!output.empty()) {
+        sorted_list.push_back(output[0]);
+        output.erase(output.begin());
     }
 
-    while (!left_half.empty())
-    {
-        merged.push_back(left_half.front());
-        left_half.erase(left_half.begin());
-    }
+    int jacob_idx = 2;
+    while (!output.empty()) {
+        int jacob = jacobsthal(jacob_idx) % output.size();
+        if (jacob == 0) jacob_idx++;
 
-    while (!right_half.empty())
-    {
-        merged.push_back(right_half.front());
-        right_half.erase(right_half.begin());
-    }
+        int element = output[jacob];
+        output.erase(output.begin() + jacob);
 
-    return (merged);
+        size_t pos = binary_search_position_deque(sorted_list, element);
+        sorted_list.insert(sorted_list.begin() + pos, element);
+
+        if (jacob >= (int)output.size()) {
+            jacob_idx = 2;
+        }
+    }
+    return (sorted_list);
 }
-
 
 bool Pmerge::isSorted()
 {
@@ -235,8 +203,6 @@ bool Pmerge::isSorted()
     }
     return (true);
 }
-
-
 
 bool Pmerge::parse_input(char **argv)
 {
