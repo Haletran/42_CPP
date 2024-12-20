@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <stdexcept>
 #include <vector>
 
 
@@ -28,6 +29,8 @@ Pmerge::~Pmerge() {}
 
 void Pmerge::process()
 {
+    if (_vectorStack.size() == 1)
+        throw std::runtime_error("Not enought number to sort");
     std::cout << "==================" << std::endl;
     get_vectorStack(0);
     double before = get_time_in_microseconds();

@@ -12,6 +12,9 @@
 
 static int recur = 0;
 
+#define BRED "\033[1;31m"
+#define RESET "\033[0m"
+
 class Pmerge{
     private:
         std::vector<int> _vectorStack;

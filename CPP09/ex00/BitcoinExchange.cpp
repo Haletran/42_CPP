@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <stdexcept>
 
 BitcoinExchange::BitcoinExchange(std::string filename) {
     std::string line;
@@ -56,9 +57,15 @@ void BitcoinExchange::convert()
             {
                 it = _stock.lower_bound(date_key);
                 --it;
-                std::string next_key = it->first;
-                float _stock_value = it->second;
-                std::cout << next_key << " => " << line_value << " = " << line_value * _stock_value << std::endl;
+                if (it == _stock.end())
+                {
+                    std::cerr << BRED "Error : " RESET<< "not exchange rate found (date)" << std::endl;
+                }
+                else {
+                    std::string next_key = it->first;
+                    float _stock_value = it->second;
+                    std::cout << next_key << " => " << line_value << " = " << line_value * _stock_value << std::endl;
+                }
             }
         }
     }

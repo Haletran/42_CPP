@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <stdexcept>
 
 bool is_op(char op)
 {
@@ -42,6 +43,8 @@ Calculator::Calculator(std::string value)
     }
     if (count_op >= count_nb)
         throw std::runtime_error("operation impossible, too many operators");
+    if (count_op == 0)
+        throw std::runtime_error("operation impossible, no operators");
     std::istringstream iss(value);
     std::string token;
     while (iss >> token)

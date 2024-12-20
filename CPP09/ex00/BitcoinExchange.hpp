@@ -27,5 +27,4 @@ class BitcoinExchange {
 int error_args(int option);
 bool check_db_error(std::string line);
 bool check_input_file_error(std::string line);
-
 int error_args();
