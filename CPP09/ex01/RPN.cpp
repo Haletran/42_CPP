@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <cctype>
 #include <stdexcept>
 
 bool is_op(char op)
@@ -34,7 +35,7 @@ Calculator::Calculator(std::string value)
 {
     int count_op = 0;
     int count_nb = 0;
-    for (int i = 0; i < value[i]; i++)
+    for (int i = 0; i < (int)value.size(); i++)
     {
         if (is_op(value[i]))
             count_op++;
@@ -56,6 +57,8 @@ Calculator::Calculator(std::string value)
         }
         else if (is_op(token[0]) && token.size() == 1)
         {
+            if (_stock_nb.size() < 2)
+                throw std::runtime_error("operation impossible, not enough numbers");
             double num2 = _stock_nb.top();
             _stock_nb.pop();
             double num3 = _stock_nb.top();
@@ -63,16 +66,16 @@ Calculator::Calculator(std::string value)
             switch(which_op(token[0]))
             {
                 case 0:
-                    _stock_nb.push(num2 + num3);
+                    _stock_nb.push(num3 + num2);
                     break;
                 case 1:
-                    _stock_nb.push(num2 - num3);
+                    _stock_nb.push(num3 - num2);
                     break;
                 case 2:
                     _stock_nb.push(num3 / num2);
                     break;
                 case 3:
-                    _stock_nb.push(num2 * num3);
+                    _stock_nb.push(num3 * num2);
                     break;
                 default:
                     std::cerr << "Error : not a valid operator" << std::endl;
